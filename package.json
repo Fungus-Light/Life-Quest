@@ -1,0 +1,14 @@
+{
+  "name": "life-quest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Fungus",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^3.0.6"
+  }
+}
