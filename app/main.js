@@ -19,7 +19,6 @@ function FormatPathToURL(_path)//this format the path of mainWindow.html into UR
     })
 }
 
-
 /*----------------------------------------*/
 
 //main logic area
@@ -44,6 +43,10 @@ const mainMenuTemplate =//default mainWindow tool bar style
 {
     label: 'File',
     submenu:[
+        {
+            label: 'Add New Quest',
+            accelerator: process.platform=='darwin'?'Command+A':'Ctrl+A',
+        },
         {
             label: 'Quit',//the menu buttom to quit the app
             accelerator: process.platform=='darwin'?'Command+Q':'Ctrl+Q',
