@@ -2,7 +2,7 @@ const electron =require('electron');
 const url =require('url');
 const path=require('path');
 //needed libraries
-const{app,BrowserWindow,Menu}=electron;//app means the main process
+const{app,BrowserWindow,Menu,ipcMain}=electron;//app means the main process
 //Menu means the tool bar,BrowserWindow means 
 
 process.env.NODE_ENV='develop'//mark the running edition
@@ -19,22 +19,28 @@ function FormatPathToURL(_path)//this format the path of mainWindow.html into UR
     })
 }
 
-function CreatSizedWindow(w,h){
-    return new BrowserWindow({width:w,height:h})
+function CreatSizedWindow(w,h,isFrameLess,_resizable){
+    return new BrowserWindow({width:w,height:h,frame: isFrameLess,resizable: _resizable})
 }
 
 /*----------------------------------------*/
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=CreatSizedWindow(1280,720)
+    mainWindow=CreatSizedWindow(800,600,false,false)
     mainWindow.loadURL(FormatPathToURL("mainWindow.html"));//this load the mainWindow page
     mainWindow.on('closed',function(){
         app.quit();
     });//if mainWindow is closed,end the application.
 
-    const mainMenu=Menu.buildFromTemplate(mainMenuTemplate);
-    Menu.setApplicationMenu(mainMenu);//set the mainWindow tool bar style
+    //const mainMenu=Menu.buildFromTemplate(mainMenuTemplate);
+    //Menu.setApplicationMenu(mainMenu);//set the mainWindow tool bar style
+});
+
+ipcMain.on("app-quit",function(){
+    console.log("app-quit");
+    mainWindow=null;
+    app.quit();
 });
 
 /*--------Menu Style Define Area---------*/

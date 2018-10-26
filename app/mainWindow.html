@@ -1,11 +1,31 @@
 <html>
    <head>
-       <title>Life-Quest:Become better in many little quests!</title>
+        <title>Life-Quest:Become better in many little quests!</title>
+        <!--the ui library-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
    </head>
-   <body>
-    <script>require('./scripts/mainWindow.js')</script>
-    <div>
-        <h1>Quest List</h1>
-    </div>
+   <body style="-webkit-app-region: drag">
+    <nav class="teal accent-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" class="brand-logo">
+                <font style="vertical-align: inherit;">Life-Quest</font>
+            </a>
+            <a id="q-btn" class="waves-effect waves-light yellow btn" style="-webkit-app-region: no-drag;" >
+                Quit</a>
+        </div>
+        <script>
+            const electron=require('electron');
+            const{ipcRenderer}=electron;
+
+            const _btn=document.getElementById("q-btn");
+            _btn.addEventListener("onclick","QuitApp");
+            function QuitApp(e){
+                e.preventDefault();
+                ipcRenderer.send("app-quit");
+            }
+        </script>
+    </nav>
    </body>
 </html>
