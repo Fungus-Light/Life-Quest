@@ -19,11 +19,15 @@ function FormatPathToURL(_path)//this format the path of mainWindow.html into UR
     })
 }
 
+function CreatSizedWindow(w,h){
+    return new BrowserWindow({width:w,height:h})
+}
+
 /*----------------------------------------*/
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=new BrowserWindow({});
+    mainWindow=CreatSizedWindow(1280,720)
     mainWindow.loadURL(FormatPathToURL("mainWindow.html"));//this load the mainWindow page
     mainWindow.on('closed',function(){
         app.quit();
