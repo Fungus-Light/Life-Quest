@@ -27,7 +27,7 @@ function CreatSizedWindow(w,h,isFrameLess,_resizable){
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=CreatSizedWindow(800,600,false,false)
+    mainWindow=CreatSizedWindow(800,600,true,true)
     mainWindow.loadURL(FormatPathToURL("mainWindow.html"));//this load the mainWindow page
     mainWindow.on('closed',function(){
         app.quit();
@@ -37,9 +37,9 @@ app.on('ready',function(){
     //Menu.setApplicationMenu(mainMenu);//set the mainWindow tool bar style
 });
 
-ipcMain.on("app-quit",function(){
-    console.log("app-quit");
-    mainWindow=null;
+ipcMain.on('forcequit',function(){
+    console.log('forcequit');
+    //mainWindow=null;
     app.quit();
 });
 

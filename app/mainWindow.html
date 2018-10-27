@@ -7,25 +7,28 @@
         
    </head>
    <body style="-webkit-app-region: drag">
-    <nav class="teal accent-1" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" class="brand-logo">
-                <font style="vertical-align: inherit;">Life-Quest</font>
-            </a>
-            <a id="q-btn" class="waves-effect waves-light yellow btn" style="-webkit-app-region: no-drag;" >
-                Quit</a>
+    <style>
+    .col {
+        background: lightblue;
+        height: 300;
+    }
+    </style>
+    <script src="scripts/mainWindow.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col s4 m4 l3">
+                <div></div>
+            </div>
+            <div class="col s4 m4 l3">
+                <div class="z-depth-1"></div>
+            </div>
+            <div class="col s4 m4 l3">
+                <div class="z-depth-2"></div>
+            </div>
+            <div class="col s4 m4 l3">
+                <div></div>
+            </div>
         </div>
-        <script>
-            const electron=require('electron');
-            const{ipcRenderer}=electron;
-
-            const _btn=document.getElementById("q-btn");
-            _btn.addEventListener("onclick","QuitApp");
-            function QuitApp(e){
-                e.preventDefault();
-                ipcRenderer.send("app-quit");
-            }
-        </script>
-    </nav>
+    </div>
    </body>
 </html>
