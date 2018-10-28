@@ -4,7 +4,8 @@
   "description": "",
   "main": "app/app.js", 
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "packapp":"electron-packager . /app life-quest --out=dist"
   },
   "author": "Fungus",
   "license": "ISC",
