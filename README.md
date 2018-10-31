@@ -1,5 +1,6 @@
 # Life-Quest
 An Electron-Based task-help application.
+基于Electron,使用Material Design Lite作为UI框架。
 
 如何使用：（仅新手参考）
 
