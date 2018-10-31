@@ -3,12 +3,12 @@ const url =require('url');
 const path=require('path');
 
 //needed libraries
-const{app,BrowserWindow,Menu,ipcMain}=electron;//app means the main process
+const{app,BrowserWindow,ipcMain}=electron;//app means the main process
 //Menu means the tool bar,BrowserWindow means 
 
 process.env.NODE_ENV='develop'//mark the running edition
 
-let mainWindow;//the main window object
+let mainWindow,connectWindow;//the main window object
 
 /*------------Some Functions--------------*/
 function FormatPathToURL(_path)//this format the path of mainWindow.html into URL address,and 
@@ -27,7 +27,7 @@ function CreatSizedWindow(w,h,hasFrame,_resizable,isShow){
 //main logic area
 app.on('ready',function(){
     mainWindow=CreatSizedWindow(1280,720,false,true,true)
-    mainWindow.loadURL(FormatPathToURL("mainWindow.html"));//this load the mainWindow page
+    mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
     mainWindow.on('closed',function(){
         app.quit();
@@ -36,8 +36,13 @@ app.on('ready',function(){
 });
 
 
-/*-----------------Message Reciever----------------------------*/
+/*-----------------Message Reciever----System Level------------------------*/
 ipcMain.on('forcequit',function(){
-    console.log('forcequit');
-    app.quit();
+    console.log('quit');
+    mainWindow.close();
 });
+
+ipcMain.on('connectus',function(){
+    connectWindow=CreatSizedWindow(400,300,false,true,true);
+    connectWindow.loadURL(FormatPathToURL("./windows/connectUs.html"));
+})
