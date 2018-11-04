@@ -13,3 +13,4 @@ connectBtn.addEventListener('click',ConnectUs);
 function ConnectUs(){
     ipcRenderer.send('connectus');
 }
+
