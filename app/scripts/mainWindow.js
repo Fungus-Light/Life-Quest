@@ -14,3 +14,8 @@ function ConnectUs(){
     ipcRenderer.send('connectus');
 }
 
+const questlibbtn=document.getElementById("quest-library");
+questlibbtn.addEventListener('click',QuestLib);
+function QuestLib(){
+    ipcRenderer.send("questlib");
+}

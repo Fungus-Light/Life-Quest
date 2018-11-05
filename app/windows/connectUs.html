@@ -4,18 +4,30 @@
 
         <link rel="stylesheet" href="../mdl/iconfont/material-icons.css">
         <link rel="stylesheet" href="../mdl/material.min.css">
-        <link rel="stylesheet" href="../mdl/styles.css">
+        <link rel="stylesheet" href="../mdl/mainstyles.css">
     </head>
 
     <body style="-webkit-app-region: drag">
         <div class="mdl-card__title mdl-card--expand">
-            <h4>
-              Life-Quest<br>
-              We are No-Named Team!!!<br>
-              v-0.0.1a<br>
+            <h4 class="mdl-card__supporting-text mdl-color-text--grey-600">
+                Life-Quest<br>
+                v-0.0.1a<br>
+                -------------<br>
+                We are No-Named Team!!!<br>
+                QQ:12345678<br>
             </h4>
           </div>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-cell--middle">Got It</button>
+            <button id="closebtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-cell--middle">Got It</button>
         <script src="../mdl/material.min.js"></script>
+        <script>
+            const electron =require('electron');
+            const {ipcRenderer}=electron;
+
+            const closebtn=document.getElementById("closebtn");
+            closebtn.addEventListener("click",CloseThis)
+            function CloseThis(){
+                ipcRenderer.send("CloseContact");
+            }
+        </script>
     </body>
 </html>

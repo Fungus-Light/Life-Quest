@@ -8,7 +8,7 @@ const{app,BrowserWindow,ipcMain}=electron;//app means the main process
 
 process.env.NODE_ENV='develop'//mark the running edition
 
-let mainWindow,connectWindow;//the main window object
+let mainWindow,connectWindow=null,questlibWindow;//the main window object
 
 /*------------Some Functions--------------*/
 function FormatPathToURL(_path)//this format the path of mainWindow.html into URL address,and 
@@ -43,6 +43,19 @@ ipcMain.on('forcequit',function(){
 });
 
 ipcMain.on('connectus',function(){
-    connectWindow=CreatSizedWindow(400,300,false,true,true);
-    connectWindow.loadURL(FormatPathToURL("./windows/connectUs.html"));
+    if(connectWindow==null){
+        connectWindow=CreatSizedWindow(300,300,false,true,true);
+        connectWindow.loadURL(FormatPathToURL("./windows/connectUs.html"));
+        connectWindow.on('closed',function(){
+            connectWindow=null;
+        });
+    }
+});
+
+ipcMain.on("questlib",function(){
+    
 })
+
+ipcMain.on("CloseContact",function(){
+    connectWindow.close();
+});
