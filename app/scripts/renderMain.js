@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------*/
 var Renderer=document.getElementById("Renderer");
-var cardid=1,Questid=1;
+var cardid=1;
 
 const testaddbtn=document.getElementById("view-source");
 testaddbtn.addEventListener('click',AddCard);
@@ -51,46 +51,6 @@ function MakeUpCard(_title){
     return temp;
 }
 
-/*
-<li>
-    <div class="collapsible-header">
-        <i class="material-icons">filter_drama</i>
-    任务1</div>
-    <div class="collapsible-body">
-        <div>这是第一行说明</div>
-        <div>这是第二行说明</div>
-    </div>
-</li>
-*/
 
-function AddQuest(){
-    console.log("add quest");
-    
-    Questid++;
-    var temp=MakeUpQuest("Quest")
-    temp.setAttribute("id","quest"+Questid);
-    Renderer.appendChild(temp);
-    var evt = document.createEvent('Event');
-    evt.initEvent('fresh', true, true);
-}
-
-function MakeUpQuest(_title){
-    var temp=MakeUpElement("li","","");
-
-    var title=MakeUpElement("div","collapsible-header",_title);
-    var icon=MakeUpElement("i","material-icons","filter_drama");
-    title.appendChild(icon);
-
-    var description=MakeUpElement("div","collapsible-body","");
-    var des1=MakeUpElement("div","","这是第一行说明");
-    var des2=MakeUpElement("div","","这是第er行说明");
-    description.appendChild(des1);
-    description.appendChild(des2);
-
-    temp.appendChild(title);
-    temp.appendChild(description);
-
-    return temp;
-}
 
 

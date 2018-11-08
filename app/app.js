@@ -55,7 +55,7 @@ ipcMain.on('connectus',function(){
 
 ipcMain.on("questlib",function(){
     if(questlibWindow==null){
-        questlibWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
+        questlibWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
         questlibWindow.loadURL(FormatPathToURL("./windows/QuestLibrary.html"));
         questlibWindow.on('closed',function(){
         questlibWindow=null;
