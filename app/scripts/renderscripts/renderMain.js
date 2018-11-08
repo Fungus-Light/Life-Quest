@@ -5,8 +5,8 @@ var cardid=1;
 const testaddbtn=document.getElementById("view-source");
 testaddbtn.addEventListener('click',AddCard);
 
-const testaddquest=document.getElementById("addquest");
-testaddquest.addEventListener('click',AddQuest);
+const testClearbtn=document.getElementById("clearall");
+testClearbtn.addEventListener("click",ClearAll);
 
 function AddCard(){
     cardid++;
@@ -51,6 +51,9 @@ function MakeUpCard(_title){
     return temp;
 }
 
+function ClearAll(){
+    Renderer.innerHTML="";
+}
 
 
 
