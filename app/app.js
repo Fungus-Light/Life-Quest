@@ -4,11 +4,12 @@ const path=require('path');
 
 //needed libraries
 const{app,BrowserWindow,ipcMain}=electron;//app means the main process
-//Menu means the tool bar,BrowserWindow means 
+//BrowserWindow means windowsshoppingWindow
 
 process.env.NODE_ENV='develop'//mark the running edition
 
-let mainWindow,connectWindow=null,questlibWindow;//the main window object
+let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null;
+//the window objects
 
 /*------------Some Functions--------------*/
 function FormatPathToURL(_path)//this format the path of mainWindow.html into URL address,and 
@@ -54,7 +55,7 @@ ipcMain.on('connectus',function(){
 
 ipcMain.on("questlib",function(){
     if(questlibWindow==null){
-        questlibWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
+        questlibWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
         questlibWindow.loadURL(FormatPathToURL("./windows/QuestLibrary.html"));
         questlibWindow.on('closed',function(){
         questlibWindow=null;
@@ -63,6 +64,24 @@ ipcMain.on("questlib",function(){
     
 })
 
+ipcMain.on("shopping",function(){
+    if(shoppingWindow==null){
+        shoppingWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
+        shoppingWindow.loadURL(FormatPathToURL("./windows/shop.html"));
+        shoppingWindow.on('closed',function(){
+        shoppingWindow=null;
+        });
+    }
+})
+
+ipcMain.on("quest-leave",function(){
+    questlibWindow.close();
+});
+
 ipcMain.on("CloseContact",function(){
     connectWindow.close();
+});
+
+ipcMain.on("shopleave",function(){
+    shoppingWindow.close();
 });

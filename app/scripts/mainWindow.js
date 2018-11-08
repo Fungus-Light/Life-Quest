@@ -19,3 +19,8 @@ questlibbtn.addEventListener('click',QuestLib);
 function QuestLib(){
     ipcRenderer.send("questlib");
 }
+
+const shoppingbtn=document.getElementById("shopping");
+shoppingbtn.addEventListener("click",function(){
+    ipcRenderer.send("shopping");
+})
