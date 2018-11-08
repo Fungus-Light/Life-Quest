@@ -1,20 +1,4 @@
-M.AutoInit();
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-    instances.open();
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, options);
-    instances.open();
-  });
-
-
 /*------------------------------------------------------------------*/
-
 var Renderer=document.getElementById("Renderer");
 var cardid=1,Questid=1;
 
@@ -22,7 +6,7 @@ const testaddbtn=document.getElementById("view-source");
 testaddbtn.addEventListener('click',AddCard);
 
 const testaddquest=document.getElementById("addquest");
-//testaddquest.addEventListener('click',AddQuest);
+testaddquest.addEventListener('click',AddQuest);
 
 function AddCard(){
     cardid++;
