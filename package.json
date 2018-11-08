@@ -2,9 +2,10 @@
   "name": "life-quest",
   "version": "1.0.0",
   "description": "",
-  "main": "app/main.js",
+  "main": "app/app.js", 
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "packapp":"electron-packager . /app life-quest --out=dist"
   },
   "author": "Fungus",
   "license": "ISC",

@@ -1,5 +1,10 @@
-app/            应用主体
-app/scripts     网页引用的脚本文件
-dist/           打包目标文件夹
-node_modules/   开发使用的库
+app/            应用主体/app files
+app/scripts     网页引用的脚本文件/js scripts files
+dist/           打包目标文件夹/the package distination
+node_modules/   开发使用的库/what needed in develop
+assets/         
+mdl/
+materialize/
+
+
 
