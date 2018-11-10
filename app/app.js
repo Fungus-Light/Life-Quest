@@ -8,7 +8,7 @@ const{app,BrowserWindow,ipcMain}=electron;//app means the main process
 
 process.env.NODE_ENV='develop'//mark the running edition
 
-let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null;
+let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null,testwin=null;
 //the window objects
 
 /*------------Some Functions--------------*/
@@ -27,7 +27,7 @@ function CreatSizedWindow(w,h,hasFrame,_resizable,isShow,_parent){
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=CreatSizedWindow(1280,720,false,true,true,null)
+    mainWindow=CreatSizedWindow(1280,720,true,true,true,null)
     mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
     mainWindow.on('closed',function(){
@@ -73,6 +73,16 @@ ipcMain.on("shopping",function(){
         });
     }
 })
+
+ipcMain.on("testwin",function(){
+    if(testwin==null){
+        testwin=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        testwin.loadURL(FormatPathToURL("./windows/testWindows.html"));
+        testwin.on('closed',function(){
+        testwin=null;
+    })
+    }
+});
 
 ipcMain.on("quest-leave",function(){
     questlibWindow.close();
