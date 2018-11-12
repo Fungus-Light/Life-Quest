@@ -24,3 +24,10 @@ const shoppingbtn=document.getElementById("shopping");
 shoppingbtn.addEventListener("click",function(){
     ipcRenderer.send("shopping");
 })
+
+const testwin=document.getElementById("testwin");
+testwin.addEventListener("click",function(){
+    ipcRenderer.send("testwin");
+});
+
+/*....................................................*/
