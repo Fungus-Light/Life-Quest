@@ -105,6 +105,6 @@ function freshwhenload(){
 function rebuild(){
     for(var i=0;i<questlib.length;i++){
         var obj=questlib[i];
-        AddQuest("id"+i,obj.title,obj._point,obj.description,obj.time);
+        AddQuest("id"+i,obj.title,obj.point,obj.description,obj.time);
     }
 }
