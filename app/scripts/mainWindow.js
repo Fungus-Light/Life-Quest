@@ -30,4 +30,13 @@ testwin.addEventListener("click",function(){
     ipcRenderer.send("testwin");
 });
 
+const personbtn=document.getElementById("personspace");
+personbtn.addEventListener("click",function(){
+    ipcRenderer.send("personspace");
+});
+
+const elsebtn=document.getElementById("else");
+elsebtn.addEventListener("click",function(){
+    ipcRenderer.send("else");
+})
 /*....................................................*/

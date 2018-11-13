@@ -9,6 +9,9 @@ const{app,BrowserWindow,ipcMain}=electron;//app means the main process
 process.env.NODE_ENV='develop'//mark the running edition
 
 let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null,testwin=null;
+let personspace=null,elsewin=null;
+//subwindows
+let addquestwin=null,addgroupwin=null;
 //the window objects
 
 /*------------Some Functions--------------*/
@@ -55,7 +58,7 @@ ipcMain.on('connectus',function(){
 
 ipcMain.on("questlib",function(){
     if(questlibWindow==null){
-        questlibWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
+        questlibWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
         questlibWindow.loadURL(FormatPathToURL("./windows/QuestLibrary.html"));
         questlibWindow.on('closed',function(){
         questlibWindow=null;
@@ -66,7 +69,7 @@ ipcMain.on("questlib",function(){
 
 ipcMain.on("shopping",function(){
     if(shoppingWindow==null){
-        shoppingWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
+        shoppingWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
         shoppingWindow.loadURL(FormatPathToURL("./windows/shop.html"));
         shoppingWindow.on('closed',function(){
         shoppingWindow=null;
@@ -84,6 +87,34 @@ ipcMain.on("testwin",function(){
     }
 });
 
+ipcMain.on("personspace",function(){
+    if(personspace==null){
+        personspace=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        personspace.loadURL(FormatPathToURL("./windows/personspace.html"));
+        personspace.on('closed',function(){
+        personspace=null;
+    })
+    }
+});
+
+ipcMain.on("else",function(){
+    if(elsewin==null){
+        elsewin=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        elsewin.loadURL(FormatPathToURL("./windows/else.html"));
+        elsewin.on('closed',function(){
+        elsewin=null;
+    })
+    }
+});
+
+ipcMain.on("elseleave",function(){
+    elsewin.close();
+});
+
+ipcMain.on("personleave",function(){
+    personspace.close();
+});
+
 ipcMain.on("quest-leave",function(){
     questlibWindow.close();
 });
@@ -94,4 +125,14 @@ ipcMain.on("CloseContact",function(){
 
 ipcMain.on("shopleave",function(){
     shoppingWindow.close();
+});
+/*subwin action----------------------------------*/
+ipcMain.on("addquest",function(){
+    if(addquestwin==null){
+        addquestwin=CreatSizedWindow(350,600,true,false,true,questlibWindow);
+        addquestwin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
+        addquestwin.on("closed",function(){
+        addquestwin=null;
+    });
+    }
 });

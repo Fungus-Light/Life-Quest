@@ -1,12 +1,6 @@
 var Renderer=document.getElementById("Renderer");
 var Questid=1;
 
-const testaddquest=document.getElementById("addquest");
-testaddquest.addEventListener('click',AddQuest);
-
-const testClearbtn=document.getElementById("clearall");
-testClearbtn.addEventListener("click",ClearAll);
-
 function MakeUpElement(_tag,_classname,_innerText){
     var temp=document.createElement(_tag);
     temp.className=_classname;

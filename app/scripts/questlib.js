@@ -23,3 +23,8 @@ questleave.addEventListener("click",QuestLeave);
 function QuestLeave(){
   ipcRenderer.send("quest-leave");
 }
+
+const addquest=document.getElementById("addquest");
+addquest.addEventListener('click',function(){
+    ipcRenderer.send("addquest");
+});
