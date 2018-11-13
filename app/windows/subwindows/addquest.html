@@ -22,24 +22,25 @@
       <div class="row">
         <form class="col s12 center-align">
           <div class="row">
-            <div class="input-field col s10">
+            <div class="input-field col s11">
                 <input id="quest-name" type="text" class="validate">
                 <label for="quest-name">Quest Name</label>
             </div>
 
-            <div class="input-field col s10">
-              <p id="quest-point" class="range-field col s7">
-                <input type="range" id="test5" min="0" max="100" />
+            <div class="input-field col s11">
+              <p id="quest-point" class="range-field">
+                <input id="pointrange" type="range" id="test5" min="0" max="300" />
               </p>
+
               <label for="quest-point">Quest Point</label>
             </div>
 
-            <div class="input-field col s10">
+            <div class="input-field col s11">
                 <input id="quest-des" type="text" class="validate">
                 <label for="quest-des">Simple Description</label>
             </div>
 
-            <div class="input-field col s10">
+            <div class="input-field col s11">
                 <input id="ddl" type="text" class="datepicker">
                 <label for="ddl">Deadline</label>
             </div>
@@ -47,7 +48,7 @@
           </div>
 
           <div class="input-field col s10">
-                <select>
+                <select id="tagselect">
                   <option value="" disabled selected>Choose your tag</option>
                   <option value="1">Study</option>
                   <option value="2">Health</option>
@@ -59,11 +60,11 @@
         </form>
 
         <div class="col s10">
-          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <button id="submmitquest" class="btn waves-effect waves-light" type="submit" name="action">Submit
               <i class="material-icons right">send</i>
           </button>
 
-          <a class="waves-effect waves-light btn">cancel</a>
+          <a id="addquestleave" class="waves-effect waves-light btn">cancel</a>
       </div>
         
       </div>

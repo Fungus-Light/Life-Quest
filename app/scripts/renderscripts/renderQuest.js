@@ -1,5 +1,30 @@
+var fs=require("fs");
+
+let questlib;
+
+function loadfile(){
+    var _data=fs.readFileSync("./app/userdata/questlib.json");
+    console.log("xx"+_data);
+    questlib=JSON.parse(_data);
+}
+
+function initline(){
+    questlib=new Array();
+}
+
+function savefile(e){
+    var jsonstr=JSON.stringify(questlib);
+    console.log(jsonstr);
+    fs.writeFile("./app/userdata/questlib.json", jsonstr,function(err){
+        if (err) {
+            return console.error(err);
+        }
+        console.log("数据写入成功！");
+    })
+}
+/*-------------------------------------------------- */
+
 var Renderer=document.getElementById("Renderer");
-var Questid=1;
 
 function MakeUpElement(_tag,_classname,_innerText){
     var temp=document.createElement(_tag);
@@ -20,16 +45,14 @@ function MakeUpElement(_tag,_classname,_innerText){
 </li>
 */
 
-function AddQuest(){
+function AddQuest(_id,_title,_point,_description,_time){
     console.log("add quest");
-    
-    Questid++;
-    var temp=MakeUpQuest("Quest")
-    temp.setAttribute("id","quest"+Questid);
+    var temp=MakeUpQuest(_title,_point,_description,_time)
+    temp.setAttribute("id","quest"+_id);
     Renderer.appendChild(temp);
 }
 
-function MakeUpQuest(_title){
+function MakeUpQuest(_title,_point,_description,_time){
     var temp=MakeUpElement("li","","");
 
     var icon=MakeUpElement("i","material-icons","filter_drama");
@@ -39,10 +62,12 @@ function MakeUpQuest(_title){
     title.appendChild(text)
 
     var description=MakeUpElement("div","collapsible-body","");
-    var des1=MakeUpElement("div","","这是第一行说明");
-    var des2=MakeUpElement("div","","这是第er行说明");
+    var des1=MakeUpElement("div","",_point);
+    var des2=MakeUpElement("div","",_description);
+    var des3=MakeUpElement("div","",_time);
     description.appendChild(des1);
     description.appendChild(des2);
+    description.appendChild(des3);
 
     temp.appendChild(title);
     temp.appendChild(description);
@@ -52,4 +77,34 @@ function MakeUpQuest(_title){
 
 function ClearAll(){
     Renderer.innerHTML="";
+}
+
+ipcRenderer.on("updatepage",function(){
+    var tempstr=localStorage.getItem("temp-quest");
+    if(tempstr!=null){
+        console.log(tempstr);
+        temp=JSON.parse(tempstr);
+        if(questlib==null){
+            initline();
+        }
+        questlib.push(temp);
+        savefile();
+        ClearAll();
+        rebuild();
+    }
+    
+});
+
+Renderer.ready=freshwhenload();
+function freshwhenload(){
+    loadfile();
+    ClearAll();
+    rebuild();
+}
+
+function rebuild(){
+    for(var i=0;i<questlib.length;i++){
+        var obj=questlib[i];
+        AddQuest("id"+i,obj.title,obj._point,obj.description,obj.time);
+    }
 }

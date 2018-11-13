@@ -3,7 +3,6 @@ M.AutoInit();
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems);
-    instances.open();
   });
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FloatingActionButton.init(elems,{
       direction: 'left'
     });
-    instances.open();
   });
 
 

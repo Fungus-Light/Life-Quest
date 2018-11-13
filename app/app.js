@@ -129,10 +129,20 @@ ipcMain.on("shopleave",function(){
 /*subwin action----------------------------------*/
 ipcMain.on("addquest",function(){
     if(addquestwin==null){
-        addquestwin=CreatSizedWindow(350,600,true,false,true,questlibWindow);
+        addquestwin=CreatSizedWindow(350,600,true,true,true,questlibWindow);
         addquestwin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
         addquestwin.on("closed",function(){
         addquestwin=null;
     });
     }
 });
+
+ipcMain.on("addquestleave",function(){
+    addquestwin.close();
+});
+
+ipcMain.on("submmitquest",function(temp){
+    addquestwin.close();
+    questlibWindow.webContents.send("updatepage");
+});
+

@@ -1,17 +1,15 @@
 var fs=require("fs");
 
-
-
-let questline;
+let currentquestline;
 
 function loadfile(){
-    var _data=fs.readFileSync("./app/userdata/test.json");
+    var _data=fs.readFileSync("./app/userdata/current.json");
     console.log("xx"+_data);
-    questline=JSON.parse(_data);
+    currentquestline=JSON.parse(_data);
 }
 
 function initline(){
-    questline=new Array();
+    currentquestline=new Array();
     loadfile();
 }
 
@@ -24,9 +22,9 @@ function Quest(_id,_title,_descrip,_time,_bg){
 }
 
 function savefile(e){
-    var jsonstr=JSON.stringify(questline);
+    var jsonstr=JSON.stringify(currentquestline);
     console.log(jsonstr);
-    fs.writeFile("./app/userdata/test.json", jsonstr,function(err){
+    fs.writeFile("./app/userdata/current.json", jsonstr,function(err){
         if (err) {
             return console.error(err);
         }
@@ -51,9 +49,9 @@ function updateline(){
 function Refresh(){
     ClearAll();
     initline();
-    if(questline.length>0){
-        for(var i=0;i<questline.length;i++){
-            var temp=questline[i];
+    if(currentquestline.length>0){
+        for(var i=0;i<currentquestline.length;i++){
+            var temp=currentquestline[i];
             AddCard(temp.id,temp.title,temp.description,temp.time,'../images/dog.png');
         }
     }
