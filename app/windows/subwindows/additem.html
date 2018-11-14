@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>添加任务</title>
+        <title>添加奖励</title>
         <!--这里是CSS样式表区域-->
         <link rel="stylesheet" href="../../mdl/iconfont/material-icons.css">
         <link type="text/css" rel="stylesheet" href="../../materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -14,7 +14,7 @@
       <div style="-webkit-app-region: drag" class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">添加任务</a>
+            <a href="#!" class="brand-logo">添加奖励</a>
           </div>
         </nav>
       </div>
@@ -23,27 +23,23 @@
         <form class="col s12 center-align">
           <div class="row">
             <div class="input-field col s11">
-                <input id="quest-name" type="text" class="validate">
-                <label for="quest-name">任务名</label>
+                <input id="item-name" type="text" class="validate">
+                <label for="item-name">奖励名</label>
             </div>
 
             <div class="input-field col s11">
-              <p id="quest-point" class="range-field">
+              <p id="item-point" class="range-field">
                 <input id="pointrange" type="range" id="test5" min="0" max="300" />
               </p>
 
-              <label for="quest-point">奖励点数</label>
+              <label for="item-point">点数</label>
             </div>
 
             <div class="input-field col s11">
-                <input id="quest-des" type="text" class="validate">
-                <label for="quest-des">简述</label>
+                <input id="item-des" type="text" class="validate">
+                <label for="item-des">简述</label>
             </div>
 
-            <div class="input-field col s11">
-                <input id="ddl" type="text" class="datepicker">
-                <label for="ddl">截止日期</label>
-            </div>
 
           </div>
 
@@ -60,11 +56,11 @@
         </form>
 
         <div class="col s10">
-          <button id="submmitquest" class="btn waves-effect waves-light" type="submit" name="action">确认
+          <button id="submmititem" class="btn waves-effect waves-light" type="submit" name="action">确认
               <i class="material-icons right">send</i>
           </button>
 
-          <a id="addquestleave" class="waves-effect waves-light btn">取消</a>
+          <a id="additemleave" class="waves-effect waves-light btn">取消</a>
       </div>
         
       </div>
