@@ -25,10 +25,10 @@ shoppingbtn.addEventListener("click",function(){
     ipcRenderer.send("shopping");
 })
 
-const testwin=document.getElementById("testwin");
-testwin.addEventListener("click",function(){
-    ipcRenderer.send("testwin");
-});
+// const testwin=document.getElementById("testwin");
+// testwin.addEventListener("click",function(){
+//     ipcRenderer.send("testwin");
+// });
 
 const personbtn=document.getElementById("personspace");
 personbtn.addEventListener("click",function(){

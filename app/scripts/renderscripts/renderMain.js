@@ -37,8 +37,8 @@ var Renderer=document.getElementById("Renderer");
 const testaddbtn=document.getElementById("view-source");
 testaddbtn.addEventListener('click',Refresh);
 
-const testClearbtn=document.getElementById("clearall");
-testClearbtn.addEventListener("click",ClearAll);
+// const testClearbtn=document.getElementById("clearall");
+// testClearbtn.addEventListener("click",ClearAll);
 
 Renderer.ready=Refresh();
 

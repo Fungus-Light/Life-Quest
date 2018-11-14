@@ -30,7 +30,7 @@ function CreatSizedWindow(w,h,hasFrame,_resizable,isShow,_parent){
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=CreatSizedWindow(1280,720,true,true,true,null)
+    mainWindow=CreatSizedWindow(1280,720,false,true,true,null)
     mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
     mainWindow.on('closed',function(){
@@ -58,7 +58,7 @@ ipcMain.on('connectus',function(){
 
 ipcMain.on("questlib",function(){
     if(questlibWindow==null){
-        questlibWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
+        questlibWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
         questlibWindow.loadURL(FormatPathToURL("./windows/QuestLibrary.html"));
         questlibWindow.on('closed',function(){
         questlibWindow=null;
@@ -69,7 +69,7 @@ ipcMain.on("questlib",function(){
 
 ipcMain.on("shopping",function(){
     if(shoppingWindow==null){
-        shoppingWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
+        shoppingWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
         shoppingWindow.loadURL(FormatPathToURL("./windows/shop.html"));
         shoppingWindow.on('closed',function(){
         shoppingWindow=null;
@@ -79,7 +79,7 @@ ipcMain.on("shopping",function(){
 
 ipcMain.on("testwin",function(){
     if(testwin==null){
-        testwin=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        testwin=CreatSizedWindow(960,540,false,true,true,mainWindow);
         testwin.loadURL(FormatPathToURL("./windows/testWindows.html"));
         testwin.on('closed',function(){
         testwin=null;
@@ -89,7 +89,7 @@ ipcMain.on("testwin",function(){
 
 ipcMain.on("personspace",function(){
     if(personspace==null){
-        personspace=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        personspace=CreatSizedWindow(960,540,false,true,true,mainWindow);
         personspace.loadURL(FormatPathToURL("./windows/personspace.html"));
         personspace.on('closed',function(){
         personspace=null;
@@ -99,7 +99,7 @@ ipcMain.on("personspace",function(){
 
 ipcMain.on("else",function(){
     if(elsewin==null){
-        elsewin=CreatSizedWindow(960,540,true,true,true,mainWindow);
+        elsewin=CreatSizedWindow(960,540,false,true,true,mainWindow);
         elsewin.loadURL(FormatPathToURL("./windows/else.html"));
         elsewin.on('closed',function(){
         elsewin=null;
@@ -129,7 +129,7 @@ ipcMain.on("shopleave",function(){
 /*subwin action----------------------------------*/
 ipcMain.on("addquest",function(){
     if(addquestwin==null){
-        addquestwin=CreatSizedWindow(350,600,true,true,true,questlibWindow);
+        addquestwin=CreatSizedWindow(350,600,false,true,true,questlibWindow);
         addquestwin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
         addquestwin.on("closed",function(){
         addquestwin=null;
