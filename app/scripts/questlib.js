@@ -26,3 +26,8 @@ const addquest=document.getElementById("addquest");
 addquest.addEventListener('click',function(){
     ipcRenderer.send("addquest");
 });
+
+const addgroup=document.getElementById("addgroup");
+addgroup.addEventListener('click',function(){
+    ipcRenderer.send("addgroup");
+});

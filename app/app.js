@@ -58,7 +58,7 @@ ipcMain.on('connectus',function(){
 
 ipcMain.on("questlib",function(){
     if(questlibWindow==null){
-        questlibWindow=CreatSizedWindow(960,540,false,false,true,mainWindow);
+        questlibWindow=CreatSizedWindow(960,540,true,false,true,mainWindow);
         questlibWindow.loadURL(FormatPathToURL("./windows/QuestLibrary.html"));
         questlibWindow.on('closed',function(){
         questlibWindow=null;
@@ -136,6 +136,17 @@ ipcMain.on("addquest",function(){
     });
     }
 });
+
+ipcMain.on("addgroup",function(){
+    if(addgroupwin==null){
+        addgroupwin=CreatSizedWindow(350,600,false,true,true,questlibWindow);
+        addgroupwin.loadURL(FormatPathToURL("./windows/subwindows/addgroup.html"));
+        addgroupwin.on("closed",function(){
+        addgroupwin=null;
+    });
+    }
+});
+
 
 ipcMain.on("addquestleave",function(){
     addquestwin.close();
