@@ -62,7 +62,7 @@ function MakeUpQuest(_title,_point,_description,_time){
     title.appendChild(text)
 
     var description=MakeUpElement("div","collapsible-body","");
-    var des1=MakeUpElement("div","",_point);
+    var des1=MakeUpElement("div","","奖励点数"+_point);
     var des2=MakeUpElement("div","",_description);
     var des3=MakeUpElement("div","",_time);
     description.appendChild(des1);
