@@ -1,0 +1,6 @@
+[{"title":"背单词","point":"2","description":"每天60个六级单词","time":"每天1次","tag":"学习"},
+    {"title":"临摹插画","point":"5","description":"临摹完整一幅画","time":"每周2次","tag":"Health"},
+    {"title":"实验报告","point":"5","description":"周五前完成实验报告","time":"1次","tag":"Health"},
+    {"title":"跑步","point":"2","description":"跑步三千米","time":"每天1次","tag":"Health"},
+    {"title":"早睡","point":"1","description":"12点之前睡觉","time":"每天1次","tag":"Health"},
+    {"title":"早起","point":"1","description":"坚持吃早饭啊","time":"每天1次","tag":"Health"}]

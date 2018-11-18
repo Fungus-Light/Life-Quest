@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>商店</title>
+        <title>奖励兑换</title>
         <!--这里是CSS样式表区域-->
         <link rel="stylesheet" href="../mdl/iconfont/material-icons.css">
         <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -14,9 +14,9 @@
       <div style="-webkit-app-region: drag" class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center-align">Buy What You Want!!!</a>
+            <a href="#!" class="brand-logo center-align">兑换你想要的！！！</a>
             <ul style="-webkit-app-region: no-drag" class="left">
-              <li><a id="shopleave" class="waves-effect waves-light btn">Leave</a></li>
+              <li><a id="shopleave" class="waves-effect waves-light btn">离开</a></li>
             </ul>
           </div>
         </nav>
@@ -24,30 +24,36 @@
             
 
       <ul id="Renderer" class="collection">
-            <li class="collection-item avatar">
-              <i class="material-icons circle">folder</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">stars</i></a>
-            </li>
-            <li class="collection-item avatar">
-              <i class="material-icons circle green">insert_chart</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
-              </p>
-              <a href="#!" class="secondary-content"><i class="material-icons">stars</i></a>
-            </li>
+            
+
             <li class="collection-item avatar">
               <i class="material-icons circle red">play_arrow</i>
-              <span class="title">Title</span>
-              <p>First Line <br>
-                 Second Line
+              <span class="title">大吃一顿</span>
+              <p>去上回那家火锅店吧 <br>
+                 200点
               </p>
               <a href="#!" class="secondary-content"><i class="material-icons">stars</i></a>
             </li>
+
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">play_arrow</i>
+              <span class="title">今天玩起</span>
+              <p>今天就多睡一会 <br>
+                 20点
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">stars</i></a>
+            </li>
+
+            <li class="collection-item avatar">
+              <i class="material-icons circle red">play_arrow</i>
+              <span class="title">一包薯片</span>
+              <p>想吃薯片了 <br>
+                 10点
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">stars</i></a>
+            </li>
+
+
           </ul>
 
       
@@ -56,8 +62,8 @@
     <i class="large material-icons">mode_edit</i>
     </a>
     <ul>
-    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+    <li><a id="additem" class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+    <li><a id="clearall" class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
     <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
     <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
     </ul>
@@ -66,6 +72,6 @@
 
       <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
       <script src="../scripts/shop.js"></script>
-      <script src="../scripts/renderpack.js"></script>
+      <script src="../scripts/renderscripts/rendershop.js"></script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>任务仓库</title>
+        <title>个人空间</title>
         <!--这里是CSS样式表区域-->
         <link rel="stylesheet" href="../mdl/iconfont/material-icons.css">
         <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
@@ -14,33 +14,28 @@
       <div style="-webkit-app-region: drag" class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
-            <a href="#!" class="brand-logo center-align">任务仓库</a>
+            <a href="#!" class="brand-logo center-align">个人空间</a>
             <ul style="-webkit-app-region: no-drag" class="left">
-              <li><a id="questlib-leave" class="waves-effect waves-light btn">离开</a></li>
+              <li><a id="personleave" class="waves-effect waves-light btn">离开</a></li>
             </ul>
           </div>
         </nav>
       </div>
-            
 
-      <ul id="Renderer" class="collapsible popout">
-        
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img src="../images/favicon.png" alt="" class="circle">
+          <span class="title">Title</span>
+          <p>First Line <br>
+             Second Line
+          </p>
+          <a href="#!" class="secondary-content"><i class="Small material-icons">cached</i></a>
+          
+
       </ul>
-
-      
-      <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
-          <i class="large material-icons">add</i>
-        </a>
-        <ul>
-          <li><a id="addquest" class="btn red">单个任务</a></li>
-          <li><a id="addgroup" class="btn yellow darken-1">任务组</a></li>
-        </ul>
-      </div>
 
 
       <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-      <script src="../scripts/questlib.js"></script>
-      <script src="../scripts/renderscripts/renderQuest.js"></script>
+      <script src="../scripts/personspace.js"></script>
     </body>
 </html>

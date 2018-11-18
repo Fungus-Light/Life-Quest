@@ -8,7 +8,10 @@ const{app,BrowserWindow,ipcMain}=electron;//app means the main process
 
 process.env.NODE_ENV='develop'//mark the running edition
 
-let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null;
+let mainWindow,connectWindow=null,questlibWindow=null,shoppingWindow=null,testwin=null;
+let personspace=null,elsewin=null;
+//subwindows
+let addquestwin=null,addgroupwin=null;
 //the window objects
 
 /*------------Some Functions--------------*/
@@ -74,6 +77,44 @@ ipcMain.on("shopping",function(){
     }
 })
 
+ipcMain.on("testwin",function(){
+    if(testwin==null){
+        testwin=CreatSizedWindow(960,540,false,true,true,mainWindow);
+        testwin.loadURL(FormatPathToURL("./windows/testWindows.html"));
+        testwin.on('closed',function(){
+        testwin=null;
+    })
+    }
+});
+
+ipcMain.on("personspace",function(){
+    if(personspace==null){
+        personspace=CreatSizedWindow(960,540,false,true,true,mainWindow);
+        personspace.loadURL(FormatPathToURL("./windows/personspace.html"));
+        personspace.on('closed',function(){
+        personspace=null;
+    })
+    }
+});
+
+ipcMain.on("else",function(){
+    if(elsewin==null){
+        elsewin=CreatSizedWindow(960,540,false,true,true,mainWindow);
+        elsewin.loadURL(FormatPathToURL("./windows/else.html"));
+        elsewin.on('closed',function(){
+        elsewin=null;
+    })
+    }
+});
+
+ipcMain.on("elseleave",function(){
+    elsewin.close();
+});
+
+ipcMain.on("personleave",function(){
+    personspace.close();
+});
+
 ipcMain.on("quest-leave",function(){
     questlibWindow.close();
 });
@@ -85,3 +126,34 @@ ipcMain.on("CloseContact",function(){
 ipcMain.on("shopleave",function(){
     shoppingWindow.close();
 });
+/*subwin action----------------------------------*/
+ipcMain.on("addquest",function(){
+    if(addquestwin==null){
+        addquestwin=CreatSizedWindow(350,600,false,true,true,questlibWindow);
+        addquestwin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
+        addquestwin.on("closed",function(){
+        addquestwin=null;
+    });
+    }
+});
+
+ipcMain.on("addgroup",function(){
+    if(addgroupwin==null){
+        addgroupwin=CreatSizedWindow(350,600,false,true,true,questlibWindow);
+        addgroupwin.loadURL(FormatPathToURL("./windows/subwindows/addgroup.html"));
+        addgroupwin.on("closed",function(){
+        addgroupwin=null;
+    });
+    }
+});
+
+
+ipcMain.on("addquestleave",function(){
+    addquestwin.close();
+});
+
+ipcMain.on("submmitquest",function(temp){
+    addquestwin.close();
+    questlibWindow.webContents.send("updatepage");
+});
+
