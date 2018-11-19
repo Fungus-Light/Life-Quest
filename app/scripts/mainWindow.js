@@ -1,7 +1,20 @@
 // const electron =require('electron');
 // const {ipcRenderer}=electron;
+M.AutoInit();
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instance = M.Carousel.init(elems,{
+        
+      });
+  });
 
 // const quitBtn=document.getElementById("quit-btn");
 // quitBtn.addEventListener('click',ForceQuit);
