@@ -5,17 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>Life-Quest</title>
-
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
-
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-
-    <link rel="shortcut icon" href="images/favicon.png">
-
     <!--The Needed CSS Style-->
     <link rel="stylesheet" href="./materialize/iconfont/material-icons.css">
     <link rel="stylesheet" href="./materialize/css/materialize.min.css">
@@ -26,11 +15,28 @@
 
   <body>
 
-    
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">three</a></li>
+    </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="center brand-logo">Logo</a>
+        <ul class="right">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!--Used Scripts-->
-    <script src="./mdl/material.min.js"></script>
+    <script src="./materialize/js/materialize.min.js"></script>
+    
+    <script src="materialize/jquery/jquery.min.js"></script>
     <script src="./scripts/mainWindow.js"></script>
-    <script src="./scripts/renderscripts/renderMain.js"></script>
   </body>
 </html>
