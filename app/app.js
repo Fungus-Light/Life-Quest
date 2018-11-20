@@ -30,7 +30,7 @@ function CreatSizedWindow(w,h,hasFrame,_resizable,isShow,_parent){
 
 //main logic area
 app.on('ready',function(){
-    mainWindow=CreatSizedWindow(1280,720,false,true,true,null)
+    mainWindow=CreatSizedWindow(800,720,false,true,true,null)
     mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
     mainWindow.on('closed',function(){
