@@ -8,9 +8,8 @@ const { app, BrowserWindow, ipcMain } = electron;//app means the main process
 
 process.env.NODE_ENV = 'develop'//mark the running edition
 
-let mainWindow, connectWindow = null, testwin = null;
-//subwindows
-let addquestwin = null, addgroupwin = null;
+let mainWindow, testwin = null;
+
 //the window objects
 
 /*------------Some Functions--------------*/
@@ -45,16 +44,6 @@ ipcMain.on('forcequit', function () {
     mainWindow.close();
 });
 
-ipcMain.on('connectus', function () {
-    if (connectWindow == null) {
-        connectWindow = CreatSizedWindow(300, 300, false, true, true, mainWindow);
-        connectWindow.loadURL(FormatPathToURL("./windows/connectUs.html"));
-        connectWindow.on('closed', function () {
-            connectWindow = null;
-        });
-    }
-});
-
 ipcMain.on("testwin", function () {
     if (testwin == null) {
         testwin = CreatSizedWindow(960, 540, false, true, true, mainWindow);
@@ -65,34 +54,4 @@ ipcMain.on("testwin", function () {
     }
 });
 
-/*subwin action----------------------------------*/
-ipcMain.on("addquest", function () {
-    if (addquestwin == null) {
-        addquestwin = CreatSizedWindow(350, 600, false, true, true, questlibWindow);
-        addquestwin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
-        addquestwin.on("closed", function () {
-            addquestwin = null;
-        });
-    }
-});
-
-ipcMain.on("addgroup", function () {
-    if (addgroupwin == null) {
-        addgroupwin = CreatSizedWindow(350, 600, false, true, true, questlibWindow);
-        addgroupwin.loadURL(FormatPathToURL("./windows/subwindows/addgroup.html"));
-        addgroupwin.on("closed", function () {
-            addgroupwin = null;
-        });
-    }
-});
-
-
-ipcMain.on("addquestleave", function () {
-    addquestwin.close();
-});
-
-ipcMain.on("submmitquest", function (temp) {
-    addquestwin.close();
-    questlibWindow.webContents.send("updatepage");
-});
 
