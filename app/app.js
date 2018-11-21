@@ -28,7 +28,7 @@ function CreatSizedWindow(w, h, hasFrame, _resizable, isShow, _parent) {
 
 //main logic area
 app.on('ready', function () {
-    mainWindow = CreatSizedWindow(800, 720, false, true, true, null)
+    mainWindow = CreatSizedWindow(800, 720, true, true, true, null)
     mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
     mainWindow.on('closed', function () {
@@ -46,7 +46,7 @@ ipcMain.on('forcequit', function () {
 
 ipcMain.on("testwin", function () {
     if (testwin == null) {
-        testwin = CreatSizedWindow(960, 540, false, true, true, mainWindow);
+        testwin = CreatSizedWindow(960, 540, true, true, true, null);
         testwin.loadURL(FormatPathToURL("./windows/testWindows.html"));
         testwin.on('closed', function () {
             testwin = null;
