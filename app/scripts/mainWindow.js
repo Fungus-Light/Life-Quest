@@ -4,8 +4,15 @@ M.AutoInit();
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  var rightnav = document.getElementById("setting");
-  var instances = M.Sidenav.init(rightnav, {
+  var setting = document.getElementById("setting");
+  var instances = M.Sidenav.init(setting, {
+    edge:'right'
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var personspace=document.getElementById("personspace");
+  var instances = M.Sidenav.init(personspace, {
     edge:'right'
   });
 });

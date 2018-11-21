@@ -54,7 +54,7 @@
             <a href="#name"><span class="black-text name">John Doe</span></a>
             <a href="#email"><span class="black-text email">jdandturk@gmail.com</span></a>
           </div></li>
-          <li><a href="#!" class="waves-effect"><i class="material-icons">cloud</i>personhome</a></li>
+          <li><a href="#!" data-target="personspace" class="sidenav-trigger waves-effect"><i class="material-icons">face</i>personhome</a></li>
 
           <li><a class="subheader"></a></li>
           <br>
@@ -64,15 +64,22 @@
           <br>
           <br>
           <li class="divider"></li>
-          <li><a data-target="setting"class="sidenav-trigger waves-effect" href="#!">setting</a></li>
-          <li><a id="quit-btn" class="waves-effect" href="#!">quit app</a></li>
+          <li><a data-target="setting" class="sidenav-trigger waves-effect" href="#!"><i class="material-icons">settings</i>setting</a></li>
+          <li><a id="quit-btn" class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>quit app</a></li>
     </ul>
 
     <ul class="no-autoinit sidenav blue lighten-5" id="setting">
-        <li><a href="#">Sass</a></li>
-        <li><a href="#">Components</a></li>
-        <li><a href="#">JavaScript</a></li>
-      </ul>
+        <li><a href="#">开机启动</a></li>
+        <li><a href="#">更换主题</a></li>
+        <li><a href="#">同步设置</a></li>
+        <li><a href="#">关于我们</a></li>
+    </ul>
+
+    <ul class="no-autoinit sidenav yellow lighten-5" id="personspace">
+      <li><a href="#">账号信息更改</a></li>
+      <li><a href="#">同步信息</a></li>
+      <li><a href="#">切换账号</a></li>
+  </ul>
   
     <div id="page-lib" class="col s12">
           <div class="container">
@@ -93,6 +100,8 @@
           </div>
         
     </div>
+
+
     <div id="page-home" class="active col s12">
       
       <div class="container">
@@ -188,6 +197,8 @@
       </div>
 
     </div>
+
+
     <div id="page-shop" class="col s12">
         <div class="container z-depth-2">
             <ul class="collection">
