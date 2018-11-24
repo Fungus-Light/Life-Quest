@@ -105,7 +105,7 @@
     <li><a href="#!" class="green lighten-3 waves-effect"><i class="material-icons">code</i>view on github</a></li>
   </ul>
 
-  <ul class="sidenav sidenav-fixed yellow lighten-5" id="add quest">
+  <ul class="sidenav yellow lighten-5" id="add_quest">
     <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
     <div class="nav-content">
       <ul class="black-text center tabs tabs-transparent">
@@ -197,10 +197,11 @@
           <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">add</i>Add Quest</div>
-        </li>
+        
       </ul>
+      <div class="center">
+          <a data-target="add_quest" class="sidenav-trigger waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Quest</a>
+      </div>
     </div>
 
   </div>
@@ -332,45 +333,16 @@
     <br>
 
     <div class="container z-depth-2">
-      <ul class="collection">
-        <li class="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle">
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle">folder</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle green">insert_chart</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
+      <ul id="shop_Renderer" class="collection">
 
-        <li class="collection-item center">
-          <a href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
-        </li>
+        
+
+        
 
       </ul>
+      <div id="addshoplist" class="center">
+          <a  href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
+      </div>
     </div>
 
   </div>
@@ -390,7 +362,6 @@
   </div>
 
   <!--Used Scripts-->
-  <script src="./materialize/jquery/jquery.min.js"></script>
   <script src="./materialize/js/materialize.min.js"></script>
   <script src="scripts/preload.js"></script>
   <script src="scripts/render.js"></script>
