@@ -1,7 +1,9 @@
 M.AutoInit();
 var Itenid=0;
 
-const shop_Renderer=document.getElementById("shop_Renderer");
+const RenderId_shop="shop_Renderer";
+
+const shop_Renderer=document.getElementById(RenderId_shop);
 const shop_addBtn=document.getElementById("addshoplist");
 shop_addBtn.addEventListener("click",AddItem);
 
@@ -10,6 +12,10 @@ function MakeUpElement(_tag,_classname,_innerText){
   temp.className=_classname;
   temp.innerText=_innerText;
   return temp;
+}
+
+function ClearAll(RenderId){
+  document.getElementById(RenderId).innerHTML="";
 }
 
 /*code to render the itemshop*/
@@ -52,6 +58,4 @@ function MakeUpItem(_title,_icon,_point,_description){
   return temp;
 }
 
-function ClearAll(RenderId){
-  document.getElementById(RenderId).innerHTML="";
-}
+
