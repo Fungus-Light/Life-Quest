@@ -1,4 +1,5 @@
 var singleTask=require("./singleTask")
+//单个任务组
 function groupTask()
 {
     this.size=0;
@@ -48,7 +49,7 @@ function groupTask()
 }
 
 //打算测试用的
-
+/*
 var one=new groupTask();
 var reward=document.getElementById("reward").Value;
 var remark=document.getElementById("remark").Value;
@@ -58,3 +59,32 @@ var ddl=document.getElementById("ddl").Value;
 one.setSingleTsk(reward,remark,label,frequence,ddl);
 one.showGroupTask();
 alert("访问越界！");
+*/
+
+//对组任务的封装
+AllGroupTask=function()
+{
+    this.size=size;
+    this.arrayGroupTask=new Array();
+    addGroupTask=function(groupTask)
+    {
+        var order=prompt("确认要添加的位置",size+1);//第一个位置是1；
+        arrayGroupTask[--order]=groupTask;
+        size++;
+    }
+    deletGroupTask=function(i)//第一个位置是1；
+    {
+        if(i>size||i<=0)
+        {
+            alert("访问越界！");
+        }
+        else
+        {
+            for(var j=i-1;j<size-1;j++)
+            {
+                addGroupTask[j]=addGroupTask[j+1];
+            }
+            size--;
+        }
+    }
+}
