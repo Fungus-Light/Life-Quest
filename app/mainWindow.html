@@ -9,7 +9,6 @@
   <!--The Needed CSS Style-->
   <link rel="stylesheet" href="./materialize/iconfont/material-icons.css">
   <link rel="stylesheet" href="./materialize/css/materialize.min.css">
-  <link rel="stylesheet" href="./chartist/chartist.min.css">
 
 </head>
 
@@ -120,6 +119,9 @@
       <div class="center">
         <a id="addtastk" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Task</a>
       </div>
+
+      <br>
+      <br>
     </div>
 
   </div>
@@ -250,18 +252,27 @@
             </div>
           </div>
 
-          <div class="col s12 m12">
-
-              <div class="card">
-                <div class="ct-chart ct-perfect-fourth"></div>
-              </div>
-              
-  
-            </div>
-
         </div>
 
         <div class="col s4 m4">
+
+          <div class="col s12 m12">
+    
+            <div class="card indigo lighten-5">
+              <div class="card-content black-text">
+                <span class="card-title">Stat</span>
+                <i>total point 1000</i>
+              </div>
+
+              <div class="card-action">
+                <a href="#" data-target="system" class="sidenav-trigger waves-effect waves-red btn-flat">
+                  open menu
+                </a>  
+              </div>
+            </div>
+  
+    
+          </div>
 
           <div class="col s12 m12">
 
@@ -303,10 +314,14 @@
         <!--Here Render the shoppable item-->
 
       </ul>
-      <div id="addshoplist" class="center">
-        <a href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
-      </div>
+      
     </div>
+    <div id="addshoplist" class="center">
+        <a href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Item</a>
+    </div>
+
+    <br>
+    <br>
 
   </div>
   <!-------------------------------------------------------------------->
@@ -319,32 +334,16 @@
     <ul>
       <li><a data-target="system" class="sidenav-trigger btn-floating blue"><i class="material-icons">menu</i></a></li>
       <li><a id="developfunct" class="btn-floating grey darken-1"><i class="material-icons">build</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">autorenew</i></a></li>
       <li><a id="quit-btn1" class="btn-floating red"><i class="material-icons">power_settings_new</i></a></li>
     </ul>
   </div>
 
   <!--Used Scripts-->
   <script src="./materialize/js/materialize.min.js"></script>
-  <script src="./chartist/chartist.min.js"></script>
   <script src="scripts/preload.js"></script>
   <script src="scripts/render.js"></script>
   <script src="./scripts/mainWindow.js"></script>
-  <script>
-      var data = {
-        // A labels array that can contain any sort of values
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-        // Our series array that contains series objects or in this case series data arrays
-        series: [
-          [5, 2, 4, 2, 0]
-        ]
-      };
-
-      // Create a new line chart object where as first parameter we pass in a selector
-      // that is resolving to our chart container element. The Second parameter
-      // is the actual data object.
-      new Chartist.Line('.ct-chart', data);
-    </script>
 </body>
 
 </html>
