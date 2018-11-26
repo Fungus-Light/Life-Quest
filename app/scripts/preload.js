@@ -48,7 +48,7 @@ function singleTask(_name,_rewardCount,_remark,_label,_frequence,_ddl)
    
 }
 
-function groupTask()
+function groupTask(_name,_rewardCount)
 {
     this.size=0;
     this.arrayTask=new Array();
@@ -92,4 +92,8 @@ function groupTask()
         }
     }
     
+}
+
+function Item(){
+
 }

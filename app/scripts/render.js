@@ -4,17 +4,7 @@ var Itenid = 0;
 const RenderId_shop = "shop_Renderer";
 const RenderId_task = "task_Renderer";
 const RenderId_current_task = "current_task_Renderer";
-
-const shop_Renderer = document.getElementById(RenderId_shop);
-const task_Renderer = document.getElementById(RenderId_task);
-const current_task_Renderer = document.getElementById(RenderId_current_task);
-
-const getcurrentbtn = document.getElementById("getcurrentbtn");
-getcurrentbtn.addEventListener("click",AddCurrent);
-const shop_addBtn = document.getElementById("addshoplist");
-shop_addBtn.addEventListener("click", AddItem);
-const task_addbtn = document.getElementById("addtastk");
-task_addbtn.addEventListener('click', AddTask);
+const RenderId_current_group="current_group_Renderer";
 
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
@@ -198,3 +188,43 @@ function MakeUpCurrent(_name,_point,_tag){
   temp.appendChild(delbtn);
   return temp;
 }
+
+/*
+<tr>
+
+  <td>draw</td>
+  <td>100</td>
+  <td>
+    <div class="progress">
+      <div class="determinate" style="width: 10%"></div>
+    </div>
+  </td>
+</tr>
+*/
+
+function AddCurrentGroup(_name,_ddl,_progress){
+  var temp=MakeUpCurrentGroup("_name","_ddl","50%");
+  current_group_Renderer.appendChild(temp);
+}
+
+function MakeUpCurrentGroup(_name,_ddl,_progress){
+  var temp=MakeUpElement("tr","","");
+
+  var name=MakeUpElement("td","",_name);
+  var ddl=MakeUpElement("td","",_ddl);
+
+  var progressbar=MakeUpElement("td","","");
+  var progs=MakeUpElement("div","progress","");
+  var bar=MakeUpElement("div","determinate","");
+  bar.style.width=_progress;
+
+  progs.appendChild(bar);
+  progressbar.appendChild(progs);
+
+  temp.appendChild(name);
+  temp.appendChild(ddl);
+  temp.appendChild(progressbar);
+
+  return temp;
+}
+

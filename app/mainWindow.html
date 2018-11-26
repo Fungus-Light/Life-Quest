@@ -81,39 +81,39 @@
   <ul class="collection sidenav blue lighten-5" id="setting">
     <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
     <li class="collection-item">
-        开机启动
-        <div class="switch">
-            <label>
-              Off
-              <input type="checkbox">
-              <span class="lever"></span>
-              On
-            </label>
-          </div>
-      
+      开机启动
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+
     </li>
     <li class="collection-item">
       启动时同步
-        <div class="switch">
-            <label>
-              Off
-              <input type="checkbox">
-              <span class="lever"></span>
-              On
-            </label>
-          </div>  
-      
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+
     </li>
     <li class="collection-item">
-        默认视图
-        <div class="input-field col s12">
-            <select>
-              <option value="" disabled selected>选择你的默认视图</option>
-              <option value="1">一般</option>
-              <option value="2">专注</option>
-            </select>
-            
-          </div>
+      默认视图
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>选择你的默认视图</option>
+          <option value="1">一般</option>
+          <option value="2">专注</option>
+        </select>
+
+      </div>
     </li>
   </ul>
 
@@ -145,7 +145,18 @@
     <br>
     <div class="container">
       <ul id="task_Renderer" class="collapsible">
-
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">filter_drama</i>
+            任务1</div>
+          <div class="collapsible-body">
+            <a></a>
+            <div>这是第一行说明</div>
+            <div>这是第二行说明</div>
+            <div href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">stars</i></div>
+            <div href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">stars</i></div>
+          </div>
+        </li>
       </ul>
       <div class="center">
         <a id="addtastk" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Task</a>
@@ -189,11 +200,11 @@
                 </thead>
 
                 <tbody id="current_task_Renderer">
-                  
+
                 </tbody>
               </table>
-              <a id="getcurrentbtn" class="tooltipped btn-floating halfway-fab waves-effect waves-light red" data-position="bottom"
-                data-tooltip="get a quest"><i class="material-icons">add</i></a>
+              <a id="getcurrentbtn" class="tooltipped btn-floating halfway-fab waves-effect waves-light red"
+                data-position="bottom" data-tooltip="get a quest"><i class="material-icons">add</i></a>
             </div>
           </div>
 
@@ -209,37 +220,8 @@
                     </tr>
                   </thead>
 
-                  <tbody>
-                    <tr>
+                  <tbody id="current_group_Renderer">
 
-                      <td>draw</td>
-                      <td>100</td>
-                      <td>
-                        <div class="progress">
-                          <div class="determinate" style="width: 10%"></div>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>Alan</td>
-                      <td>Jellybean</td>
-                      <td>
-                        <div class="progress">
-                          <div class="determinate" style="width: 60%"></div>
-                        </div>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>Jonathan</td>
-                      <td>Lollipop</td>
-                      <td>
-                        <div class="progress">
-                          <div class="determinate" style="width: 90%"></div>
-                        </div>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
