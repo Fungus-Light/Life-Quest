@@ -1,26 +1,30 @@
 M.AutoInit();
-var Itenid=0;
+var Itenid = 0;
 
-const RenderId_shop="shop_Renderer";
-const RenderId_task="task_Renderer";
+const RenderId_shop = "shop_Renderer";
+const RenderId_task = "task_Renderer";
+const RenderId_current_task = "current_task_Renderer";
 
-const shop_Renderer=document.getElementById(RenderId_shop);
-const task_Renderer=document.getElementById(RenderId_task);
+const shop_Renderer = document.getElementById(RenderId_shop);
+const task_Renderer = document.getElementById(RenderId_task);
+const current_task_Renderer = document.getElementById(RenderId_current_task);
 
-const shop_addBtn=document.getElementById("addshoplist");
-shop_addBtn.addEventListener("click",AddItem);
-const task_addbtn=document.getElementById("addtastk");
-task_addbtn.addEventListener('click',AddTask);
+const getcurrentbtn = document.getElementById("getcurrentbtn");
+getcurrentbtn.addEventListener("click",AddCurrent);
+const shop_addBtn = document.getElementById("addshoplist");
+shop_addBtn.addEventListener("click", AddItem);
+const task_addbtn = document.getElementById("addtastk");
+task_addbtn.addEventListener('click', AddTask);
 
-function MakeUpElement(_tag,_classname,_innerText){
-  var temp=document.createElement(_tag);
-  temp.className=_classname;
-  temp.innerText=_innerText;
+function MakeUpElement(_tag, _classname, _innerText) {
+  var temp = document.createElement(_tag);
+  temp.className = _classname;
+  temp.innerText = _innerText;
   return temp;
 }
 
-function ClearAll(RenderId){
-  document.getElementById(RenderId).innerHTML="";
+function ClearAll(RenderId) {
+  document.getElementById(RenderId).innerHTML = "";
 }
 
 /*code to render the itemshop*/
@@ -39,30 +43,29 @@ function ClearAll(RenderId){
     </div>
     </li>
 */
-function AddItem(){
+function AddItem() {
   Itenid++;
-  var temp=MakeUpItem("Item","play_arrow",180,"is description");
-  temp.setAttribute("id","item"+Itenid);
+  var temp = MakeUpItem("Item", "play_arrow", 180, "is description");
+  temp.setAttribute("id", "item" + Itenid);
   shop_Renderer.appendChild(temp);
 }
 
-function MakeUpItem(_title,_icon,_point,_description)
-{
-  var temp=MakeUpElement("li","collection-item avatar","");
+function MakeUpItem(_title, _icon, _point, _description) {
+  var temp = MakeUpElement("li", "collection-item avatar", "");
 
-  var icon=MakeUpElement("i","material-icons circle red",_icon);
-  var title=MakeUpElement("span","title",_title);
-  var des1=MakeUpElement("p","","point"+_point);
-  var des2=MakeUpElement("p","","description"+_description);
+  var icon = MakeUpElement("i", "material-icons circle red", _icon);
+  var title = MakeUpElement("span", "title", _title);
+  var des1 = MakeUpElement("p", "", "point" + _point);
+  var des2 = MakeUpElement("p", "", "description" + _description);
 
-  var buttom=MakeUpElement("div","secondary-content","");
-  var buttom1=MakeUpElement("a","waves-effect waves-red btn-flat","");
-  buttom1.setAttribute("href","#!");
-  var btnicon1=MakeUpElement("i","material-icons","insert_emoticon");
+  var buttom = MakeUpElement("div", "secondary-content", "");
+  var buttom1 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
+  buttom1.setAttribute("href", "#!");
+  var btnicon1 = MakeUpElement("i", "material-icons", "insert_emoticon");
   buttom1.appendChild(btnicon1);
-  var buttom2=MakeUpElement("a","waves-effect waves-red btn-flat","");
-  buttom2.setAttribute("href","#!");
-  var btnicon2=MakeUpElement("i","material-icons","insert_emoticon");
+  var buttom2 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
+  buttom2.setAttribute("href", "#!");
+  var btnicon2 = MakeUpElement("i", "material-icons", "insert_emoticon");
   buttom2.appendChild(btnicon2);
   buttom.appendChild(buttom1);
   buttom.appendChild(buttom2);
@@ -92,44 +95,106 @@ make up quest
 </li>
 */
 
-function AddTask(_id,_title,_point,_description,_time){
-  var temp=MakeUpTask(_title,"filter_drama",_point,_description,_time)
-  temp.setAttribute("id","quest"+_id);
+function AddTask(_id, _title, _point, _description, _time) {
+  var temp = MakeUpTask(_title, "filter_drama", _point, _description, _time)
   task_Renderer.appendChild(temp);
 }
 
-function MakeUpTask(_title,_icon,_point,_description,_time){
-  var temp=MakeUpElement("li","","");
+function MakeUpTask(_title, _icon, _point, _description, _time) {
+  var temp = MakeUpElement("li", "", "");
 
-  var icon=MakeUpElement("i","material-icons",_icon);
-  var title=MakeUpElement("div","collapsible-header","");
-  var text=document.createTextNode(_title);
+  var icon = MakeUpElement("i", "material-icons", _icon);
+  var title = MakeUpElement("div", "collapsible-header", "");
+  var text = document.createTextNode(_title);
   title.appendChild(icon);
   title.appendChild(text)
 
-  var description=MakeUpElement("div","collapsible-body","");
-  var des1=MakeUpElement("div","","奖励点数"+_point);
-  var des2=MakeUpElement("div","",_description);
-  var des3=MakeUpElement("div","",_time);
+  var description = MakeUpElement("div", "collapsible-body", "");
+  var des1 = MakeUpElement("div", "", "奖励点数" + _point);
+  var des2 = MakeUpElement("div", "", _description);
+  var des3 = MakeUpElement("div", "", _time);
   description.appendChild(des1);
   description.appendChild(des2);
   description.appendChild(des3);
 
-  var buttom1=MakeUpElement("div","waves-effect waves-red btn-flat","");
-  buttom1.setAttribute("href","#!");
-  var btnicon1=MakeUpElement("i","material-icons","insert_emoticon");
+  var buttom1 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
+  buttom1.setAttribute("href", "#!");
+  var btnicon1 = MakeUpElement("i", "material-icons", "insert_emoticon");
   buttom1.appendChild(btnicon1);
-  var buttom2=MakeUpElement("div","waves-effect waves-red btn-flat","");
-  buttom2.setAttribute("href","#!");
-  var btnicon2=MakeUpElement("i","material-icons","insert_emoticon");
+  var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
+  buttom2.setAttribute("href", "#!");
+  var btnicon2 = MakeUpElement("i", "material-icons", "insert_emoticon");
   buttom2.appendChild(btnicon2);
   description.appendChild(buttom1);
   description.appendChild(buttom2);
 
   temp.appendChild(title);
   temp.appendChild(description);
-  
+
 
   return temp;
 }
 
+/*
+<tr>
+
+  <td>
+    <label>
+      <input type="checkbox" />
+      <span></span>
+    </label>
+  </td>
+
+  <td>draw</td>
+
+  <td>100</td>
+
+  <td>study</td>
+
+  <td>
+
+    <a class="waves-effect waves-red btn-small-flat">
+      <i class="material-icons">close</i>
+    </a>
+
+  </td>
+
+</tr>
+*/
+
+function AddCurrent(_name,_point,_tag){
+  var temp=MakeUpCurrent("draw","100","study");
+  current_task_Renderer.appendChild(temp);
+}
+
+function MakeUpCurrent(_name,_point,_tag){
+  var temp=MakeUpElement("tr","","");
+
+  var checkbox=MakeUpElement("td","","");
+  var boxlabel=MakeUpElement("label","","");
+  var ckb=MakeUpElement("input","","");
+  ckb.setAttribute("type","checkbox");
+  var slider=MakeUpElement("span","","");
+  boxlabel.appendChild(ckb);
+  boxlabel.appendChild(slider);
+  checkbox.appendChild(boxlabel);
+
+  var name=MakeUpElement("td","",_name);
+
+  var point=MakeUpElement("td","",_point);
+
+  var tag=MakeUpElement("td","",_tag);
+
+  var delbtn=MakeUpElement("td","","");
+  var btn=MakeUpElement("a","waves-effect waves-red btn-small-flat","");
+  var icon=MakeUpElement("a","material-icons","close");
+  btn.appendChild(icon);
+  delbtn.appendChild(btn);
+
+  temp.appendChild(checkbox);
+  temp.appendChild(name);
+  temp.appendChild(point);
+  temp.appendChild(tag);
+  temp.appendChild(delbtn);
+  return temp;
+}
