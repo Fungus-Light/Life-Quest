@@ -53,6 +53,7 @@
 
 
   <ul class="sidenav" id="system">
+    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
     <li>
       <div class="user-view">
         <div class="background">
@@ -71,33 +72,115 @@
     <br>
     <br>
     <br>
+    <br>
     <li class="divider"></li>
     <li><a data-target="connectus" class="sidenav-trigger waves-effect" href="#!"><i class="material-icons">info_outline</i>connect
         us</a></li>
     <li><a id="quit-btn" class="waves-effect" href="#!"><i class="material-icons">power_settings_new</i>quit app</a></li>
   </ul>
 
-  <ul class="no-autoinit sidenav blue lighten-5" id="setting">
-    <li><a href="#">开机启动</a></li>
-    <li><a href="#">更换主题</a></li>
-    <li><a href="#">同步设置</a></li>
-    <li><a href="#">关于我们</a></li>
+  <ul class="collection sidenav blue lighten-5" id="setting">
+    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
+    <li class="collection-item">Alvin</li>
   </ul>
 
-  <ul class="no-autoinit sidenav yellow lighten-5" id="personspace">
+  <ul class="sidenav yellow lighten-5" id="personspace">
+    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
     <li><a href="#">账号信息更改</a></li>
     <li><a href="#">同步信息</a></li>
     <li><a href="#">切换账号</a></li>
   </ul>
 
   <ul class="sidenav grey lighten-5" id="connectus">
-    <li><a href="#">账号信息更改</a></li>
-    <li><a href="#">同步信息</a></li>
-    <li><a href="#">切换账号</a></li>
+    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
+    <br>
+    <div class="container">
+      <p class="flow-text">we are unnamed team cccccccccc</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <li><a href="#!" class="green lighten-3 waves-effect"><i class="material-icons">code</i>view on github</a></li>
+  </ul>
+
+  <ul class="sidenav yellow lighten-5" id="add_quest">
+    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
+    <div class="nav-content">
+      <ul class="black-text center tabs tabs-transparent">
+        <li class="pink lighten-3 tab"><a class="black-text" href="#addquest">quest</a></li>
+        <li class="red lighten-3 tab"><a class="black-text" href="#addgroup">group</a></li>
+      </ul>
+    </div>
+
+
+
+    <div id="addquest">
+      <div class="container">
+          <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="col s12">
+                      <ul class="collapsible">
+                          <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                          </li>
+                          <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                          </li>
+                          <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                          </li>
+                        </ul>
+                              
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col s12">
+                    This is an inline input field:
+                    <div class="input-field inline">
+                      <input id="email_inline" type="email" class="validate">
+                      <label for="email_inline">Email</label>
+                      <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+      </div>
+    </div>
+
+    <div id="addgroup">
+      <h1>2222222222222222222222</h1>
+    </div>
+
   </ul>
 
 
   <!--Page lib-->
+  <!--------------------------------------------------------->
   <div id="page-lib" class="col s12">
     <br>
     <br>
@@ -116,14 +199,16 @@
           <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
           <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
         </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">add</i>Add Quest</div>
-        </li>
+        
       </ul>
+      <div class="center">
+          <a data-target="add_quest" class="sidenav-trigger waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Quest</a>
+      </div>
     </div>
 
   </div>
   <!--Home page-->
+  <!----------------------------------------------------------->
   <div id="page-home" class="active col s12">
 
     <br>
@@ -144,7 +229,8 @@
                 <a href="#!" class="collection-item">Alvin</a>
                 <a href="#!" class="collection-item">Alvin</a>
               </div>
-              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <a class="tooltipped btn-floating halfway-fab waves-effect waves-light red" data-position="bottom"
+                data-tooltip="get a quest"><i class="material-icons">add</i></a>
             </div>
           </div>
 
@@ -239,7 +325,9 @@
     </div>
 
   </div>
+
   <!--shop page-->
+  <!---------------------------------------------------------------->
   <div id="page-shop" class="col s12">
 
     <br>
@@ -247,6 +335,9 @@
     <br>
 
     <div class="container z-depth-2">
+
+      <ul id="shop_Renderer" class="collection">
+
       <ul class="collection">
         <li class="collection-item avatar">
           <img src="images/yuna.jpg" alt="" class="circle">
@@ -281,11 +372,15 @@
           <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
         </li>
 
-        <li class="collection-item center">
-          <a href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
-        </li>
+
+        
+
+        
 
       </ul>
+      <div id="addshoplist" class="center">
+          <a  href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
+      </div>
     </div>
 
   </div>
@@ -305,7 +400,6 @@
   </div>
 
   <!--Used Scripts-->
-  <script src="./materialize/jquery/jquery.min.js"></script>
   <script src="./materialize/js/materialize.min.js"></script>
   <script src="scripts/preload.js"></script>
   <script src="scripts/render.js"></script>
