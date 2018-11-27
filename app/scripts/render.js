@@ -6,6 +6,11 @@ const RenderId_task = "task_Renderer";
 const RenderId_current_task = "current_task_Renderer";
 const RenderId_current_group="current_group_Renderer";
 
+const shop_Renderer = document.getElementById(RenderId_shop);
+const task_Renderer = document.getElementById(RenderId_task);
+const current_task_Renderer = document.getElementById(RenderId_current_task);
+const current_group_Renderer=document.getElementById(RenderId_current_group);
+
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
   temp.className = _classname;
