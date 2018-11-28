@@ -51,5 +51,11 @@ ipcRenderer.on("add_item",function(){
 ipcRenderer.on("add_quest",function(){
   var newTask=JSON.parse(localStorage.getItem("temp-quest"));
   console.log(newTask);
-  AddTask(task_Renderer,newTask.title,newTask.icon, newTask.point, newTask.description,newTask.time)
+  AddTask(newTask.title,newTask.icon, newTask.point, newTask.description,newTask.time);
 });
+
+ipcRenderer.on("add_group",function(){
+  var newGroup=JSON.parse(localStorage.getItem("temp-group"));
+  console.log(newGroup);
+  AddGroup(newGroup.title, newGroup.icon, newGroup.point, newGroup.description, newGroup.time,newGroup.tasks)
+})

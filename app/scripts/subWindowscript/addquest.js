@@ -46,7 +46,7 @@ function createQuest(){
 
 const leavebtn=document.getElementById("leave");
 leavebtn.addEventListener("click",function(){
-  ipcRenderer.send("quit-quest");
+  ipcRenderer.send("quit_quest");
 });
 
 const submmit=document.getElementById("submmit");
@@ -56,5 +56,4 @@ submmit.addEventListener("click",function(){
   localStorage.removeItem("temp-quest")
   localStorage.setItem("temp-quest",tempstr);
   ipcRenderer.send("add_quest");
-  ipcRenderer.send("quit_quest");
 });

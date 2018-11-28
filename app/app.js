@@ -15,7 +15,9 @@ process.env.NODE_ENV = 'develop'//mark the running edition
 
 let mainWindow, testwin = null;
 let getTaskWin=null,addTaskWin=null,addItemWin=null,addGroupWin=null;
+let subAddTask=null;
 let hasSubWindows=false;
+let issubtask=false;
 //主窗口、测试窗口的变量
 
 //the window objects
@@ -100,7 +102,7 @@ ipcMain.on("add_item",function(){
     mainWindow.webContents.send('add_item');
 });
 
-//above is add_item functions 
+//above is ---------------------------add_item functions 
 
 ipcMain.on("addtask",function(){
     if(addTaskWin==null&&hasSubWindows==false){
@@ -114,14 +116,30 @@ ipcMain.on("addtask",function(){
     }
 });
 
-ipcMain.on("quit-quest",function(){
-    addTaskWin.close();
+ipcMain.on("quit_quest",function(){
+    
+    if(issubtask==true){
+        subAddTask.close();
+        issubtask=false;
+    }else{
+        addTaskWin.close();
+    }
+    
 });
 
 ipcMain.on("add_quest",function(){
-    mainWindow.webContents.send("add_quest");
-    addTaskWin.close();
+    if(issubtask==true){
+        addGroupWin.webContents.send("add_sub");
+        subAddTask.close();
+        issubtask=false;
+    }else{
+        mainWindow.webContents.send("add_quest");
+        addTaskWin.close();
+    }
+    
 });
+
+/*------------------------------------------------------------*/
 
 ipcMain.on("addgroup",function(){
     if(addGroupWin==null&&hasSubWindows==false){
@@ -133,4 +151,22 @@ ipcMain.on("addgroup",function(){
             hasSubWindows=false;
         })
     }
+});
+
+ipcMain.on("addsubtask",function(){
+    issubtask=true;
+    subAddTask=CreatSizedWindow(400, 720, true, true, true, addGroupWin);
+    subAddTask.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
+    subAddTask.on('closed', function () {
+        subAddTask = null;
+    })
+});
+
+ipcMain.on("quit_group",function(){
+    addGroupWin.close();
+});
+
+ipcMain.on("add_group",function(){
+    mainWindow.webContents.send("add_group");
+    addGroupWin.close();
 });

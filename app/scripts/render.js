@@ -1,4 +1,10 @@
 M.AutoInit();
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems);
+});
+
 var Itenid = 0;
 
 const RenderId_shop = "shop_Renderer";
@@ -90,9 +96,9 @@ make up quest
 </li>
 */
 
-function AddTask(Renderer,_title,_icon, _point, _description, _time) {
+function AddTask(_title,_icon, _point, _description, _time) {
   var temp = MakeUpTask(_title, _icon, _point, _description, _time)
-  Renderer.appendChild(temp);
+  task_Renderer.appendChild(temp);
 }
 
 function MakeUpTask(_title, _icon, _point, _description, _time) {
@@ -256,6 +262,10 @@ function MakeUpCurrentGroup(_name,_ddl,_progress){
     
   </li>
 */
+function AddGroup(_title, _icon, _point, _description, _time,_tasks){
+  var temp=MakeUpGroup(_title, _icon, _point, _description, _time,_tasks);
+  task_Renderer.appendChild(temp);
+}
 
 function MakeUpGroup(_title, _icon, _point, _description, _time,_tasks) {
   var temp = MakeUpElement("li", "", "");
@@ -273,14 +283,15 @@ function MakeUpGroup(_title, _icon, _point, _description, _time,_tasks) {
   description.appendChild(des1);
   description.appendChild(des2);
   description.appendChild(des3);
-
   if(_tasks.length>0){
-    var subReander=MakeUpElement("ul","collapsible","");
+    var sub_Reander=MakeUpElement("ul","collapsible","");
     for(var i=0;i<_tasks.length;i++){
       var subtemp=_tasks[i];
-      AddTask(subReander,subtemp.title,subtemp.icon,subtemp.point,subtemp.description,subtemp._time);
+      var node=MakeUpTask(subtemp.title,subtemp.icon,subtemp.point,subtemp.description,subtemp.time);
+      sub_Reander.appendChild(node);
     }
-    description.appendChild(subReander);
+    M.Collapsible.init(sub_Reander);
+    description.appendChild(sub_Reander);
   }
 
   var buttom1 = MakeUpElement("div", "waves-effect waves-green btn-flat", "");
