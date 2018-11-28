@@ -38,29 +38,29 @@ function ClearAll(RenderId) {
     </div>
     </li>
 */
-function AddItem() {
+function AddItem(_title, _icon, _point, _description) {
   Itenid++;
-  var temp = MakeUpItem("Item", "play_arrow", 180, "is description");
+  var temp = MakeUpItem(_title, _icon, _point, _description);
   temp.setAttribute("id", "item" + Itenid);
   shop_Renderer.appendChild(temp);
 }
 
 function MakeUpItem(_title, _icon, _point, _description) {
-  var temp = MakeUpElement("li", "collection-item avatar", "");
+  var temp = MakeUpElement("li", "collection-item avatar","");
 
-  var icon = MakeUpElement("i", "material-icons circle red", _icon);
+  var icon = MakeUpElement("i", "material-icons circle blue", _icon);
   var title = MakeUpElement("span", "title", _title);
-  var des1 = MakeUpElement("p", "", "point" + _point);
-  var des2 = MakeUpElement("p", "", "description" + _description);
+  var des1 = MakeUpElement("p", "", "point:" + _point);
+  var des2 = MakeUpElement("p", "", "description:" + _description);
 
   var buttom = MakeUpElement("div", "secondary-content", "");
-  var buttom1 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
+  var buttom1 = MakeUpElement("a", "waves-effect waves-green btn-flat", "");
   buttom1.setAttribute("href", "#!");
-  var btnicon1 = MakeUpElement("i", "material-icons", "insert_emoticon");
+  var btnicon1 = MakeUpElement("i", "material-icons", "check");
   buttom1.appendChild(btnicon1);
   var buttom2 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
-  var btnicon2 = MakeUpElement("i", "material-icons", "insert_emoticon");
+  var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
   buttom.appendChild(buttom1);
   buttom.appendChild(buttom2);
@@ -90,8 +90,8 @@ make up quest
 </li>
 */
 
-function AddTask(_id, _title, _point, _description, _time) {
-  var temp = MakeUpTask(_title, "filter_drama", _point, _description, _time)
+function AddTask(_title,_icon, _point, _description, _time) {
+  var temp = MakeUpTask(_title, _icon, _point, _description, _time)
   task_Renderer.appendChild(temp);
 }
 
@@ -112,13 +112,13 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
   description.appendChild(des2);
   description.appendChild(des3);
 
-  var buttom1 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
+  var buttom1 = MakeUpElement("div", "waves-effect waves-green btn-flat", "");
   buttom1.setAttribute("href", "#!");
-  var btnicon1 = MakeUpElement("i", "material-icons", "insert_emoticon");
+  var btnicon1 = MakeUpElement("i", "material-icons", "edit");
   buttom1.appendChild(btnicon1);
   var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
-  var btnicon2 = MakeUpElement("i", "material-icons", "insert_emoticon");
+  var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
   description.appendChild(buttom1);
   description.appendChild(buttom2);

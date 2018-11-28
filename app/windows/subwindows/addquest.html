@@ -28,8 +28,8 @@
             </div>
 
             <div class="input-field col s11">
-              <p id="quest-point" class="range-field">
-                <input id="pointrange" type="range" id="test5" min="0" max="300" />
+              <p class="range-field">
+                <input id="quest-point" type="range" id="test5" min="0" max="300" />
               </p>
 
               <label for="quest-point">奖励点数</label>
@@ -41,15 +41,15 @@
             </div>
 
             <div class="input-field col s11">
-                <input id="ddl" type="text" class="datepicker">
-                <label for="ddl">截止日期</label>
+                <input id="quest-ddl" type="text" class="datepicker">
+                <label for="quest-ddl">截止日期</label>
             </div>
 
           </div>
 
           <div class="input-field col s8">
               <p id="freqcbar" class="range-field">
-                <input id="freqcrange" type="range" id="test5" min="0" max="30" />
+                <input id="quest-freqcnum" type="range" id="test5" min="0" max="30" />
               </p>
 
               <label for="freqcbar">次</label>
@@ -67,11 +67,12 @@
 
 
           <div class="input-field col s11">
-                <select id="tagselect">
+                <select id="quest-tag">
                   <option value="" disabled selected>选择你的标签</option>
                   <option value="1">学习</option>
                   <option value="2">健康</option>
                   <option value="3">运动</option>
+                  <option value="4">其他</option>
                 </select>
                 <label>标签</label>
           </div>
@@ -79,11 +80,11 @@
         </form>
 
         <div class="col s11">
-          <button id="submmitquest" class="btn waves-effect waves-light" type="submit" name="action">确认
+          <button id="submmit" class="btn waves-effect waves-light" type="submit" name="action">确认
               <i class="material-icons right">send</i>
           </button>
 
-          <a id="addquestleave" class="waves-effect waves-light btn">取消</a>
+          <a id="leave" class="waves-effect waves-light btn">取消</a>
       </div>
         
       </div>

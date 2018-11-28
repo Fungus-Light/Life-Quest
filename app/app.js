@@ -77,7 +77,7 @@ ipcMain.on("gettask",function(){
         })
     }
 });
-
+//---------------------------------------------------
 ipcMain.on("additem",function(){
     console.log("addItem");
     
@@ -92,6 +92,16 @@ ipcMain.on("additem",function(){
     }
 });
 
+ipcMain.on("quit_item",function(){
+    addItemWin.close();
+});
+
+ipcMain.on("add_item",function(){
+    mainWindow.webContents.send('add_item');
+});
+
+//above is add_item functions 
+
 ipcMain.on("addtask",function(){
     if(addTaskWin==null&&hasSubWindows==false){
         addTaskWin = CreatSizedWindow(400, 720, true, true, true, mainWindow);
@@ -102,6 +112,15 @@ ipcMain.on("addtask",function(){
             hasSubWindows=false;
         })
     }
+});
+
+ipcMain.on("quit-quest",function(){
+    addTaskWin.close();
+});
+
+ipcMain.on("add_quest",function(){
+    mainWindow.webContents.send("add_quest");
+    addTaskWin.close();
 });
 
 ipcMain.on("addgroup",function(){

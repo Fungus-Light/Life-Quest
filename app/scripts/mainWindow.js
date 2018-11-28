@@ -39,3 +39,17 @@ const testbtn = document.getElementById("developfunct");
 testbtn.addEventListener('click', function () {
   ipcRenderer.send('testwin');
 });
+
+/*--------------------get message---------------------------*/
+
+ipcRenderer.on("add_item",function(){
+  var newItem=JSON.parse(localStorage.getItem('temp_item'));
+  console.log(newItem);
+  AddItem(newItem.name,newItem.icon,newItem.point,newItem.description);
+});
+
+ipcRenderer.on("add_quest",function(){
+  var newTask=JSON.parse(localStorage.getItem("temp-quest"));
+  console.log(newTask);
+  AddTask(newTask.title,newTask.icon, newTask.point, newTask.description,newTask.time)
+});
