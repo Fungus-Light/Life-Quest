@@ -23,13 +23,15 @@
         <form class="col s12 center-align">
           <div class="row">
             <div class="input-field col s11">
+              <!--here-->
                 <input id="item-name" type="text" class="validate">
                 <label for="item-name">奖励名</label>
             </div>
 
             <div class="input-field col s11">
-              <p id="item-point" class="range-field">
-                <input id="pointrange" type="range" id="test5" min="0" max="300" />
+              <p class="range-field">
+                <!--here-->
+                <input id="item-point" type="range" id="test5" min="0" max="500" />
               </p>
 
               <label for="item-point">点数</label>
@@ -40,32 +42,35 @@
                 <label for="item-des">简述</label>
             </div>
 
-
-          </div>
-
-          <div class="input-field col s10">
-                <select id="tagselect">
+            <div class="input-field col s12">
+                <select id="item-tag">
                   <option value="" disabled selected>选择你的标签</option>
-                  <option value="1">学习</option>
-                  <option value="2">健康</option>
-                  <option value="3">运动</option>
+                  <option value="1">吃</option>
+                  <option value="2">买</option>
+                  <option value="3">玩</option>
+                  <option value="4">其他</option>
                 </select>
                 <label>标签</label>
             </div>
 
+          </div>
+
+              
+      
+
         </form>
 
         <div class="col s10">
-          <button id="submmititem" class="btn waves-effect waves-light" type="submit" name="action">确认
+          <button id="submmit" class="btn waves-effect waves-light" type="submit" name="action">确认
               <i class="material-icons right">send</i>
           </button>
 
-          <a id="additemleave" class="waves-effect waves-light btn">取消</a>
+          <a id="leave" class="waves-effect waves-light btn">取消</a>
       </div>
         
       </div>
 
       <script type="text/javascript" src="../../materialize/js/materialize.min.js"></script>
-      
+      <script src="../../scripts/subWindowscript/additem.js"></script>
     </body>
 </html>

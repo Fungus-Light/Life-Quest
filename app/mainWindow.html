@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -43,7 +42,7 @@
       <div class="nav-content">
         <ul class="center tabs tabs-transparent">
           <li class="tab"><a href="#page-lib">quest lib</a></li>
-          
+
           <li class="tab"><a class="active" href="#page-home">mainboard</a></li>
           <li class="tab"><a href="#page-shop">shop</a></li>
         </ul>
@@ -81,10 +80,41 @@
 
   <ul class="collection sidenav blue lighten-5" id="setting">
     <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
-    <li class="collection-item">Alvin</li>
+    <li class="collection-item">
+      开机启动
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+
+    </li>
+    <li class="collection-item">
+      启动时同步
+      <div class="switch">
+        <label>
+          Off
+          <input type="checkbox">
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+
+    </li>
+    <li class="collection-item">
+      默认视图
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>选择你的默认视图</option>
+          <option value="1">一般</option>
+          <option value="2">专注</option>
+        </select>
+
+      </div>
+    </li>
   </ul>
 
   <ul class="sidenav yellow lighten-5" id="personspace">
@@ -107,78 +137,6 @@
     <li><a href="#!" class="green lighten-3 waves-effect"><i class="material-icons">code</i>view on github</a></li>
   </ul>
 
-  <ul class="sidenav yellow lighten-5" id="add_quest">
-    <li><a class="sidenav-close waves-effect" href="#!"><i class="material-icons">keyboard_arrow_left</i>leave</a></li>
-    <div class="nav-content">
-      <ul class="black-text center tabs tabs-transparent">
-        <li class="pink lighten-3 tab"><a class="black-text" href="#addquest">quest</a></li>
-        <li class="red lighten-3 tab"><a class="black-text" href="#addgroup">group</a></li>
-      </ul>
-    </div>
-
-
-
-    <div id="addquest">
-      <div class="container">
-          <div class="row">
-              <form class="col s12">
-                <div class="row">
-                  <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                  </div>
-                  <div class="col s12">
-                      <ul class="collapsible">
-                          <li>
-                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                          </li>
-                          <li>
-                            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                          </li>
-                          <li>
-                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                          </li>
-                        </ul>
-                              
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12">
-                    This is an inline input field:
-                    <div class="input-field inline">
-                      <input id="email_inline" type="email" class="validate">
-                      <label for="email_inline">Email</label>
-                      <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-      </div>
-    </div>
-
-    <div id="addgroup">
-      <h1>2222222222222222222222</h1>
-    </div>
-
-  </ul>
-
-
   <!--Page lib-->
   <!--------------------------------------------------------->
   <div id="page-lib" class="col s12">
@@ -186,24 +144,16 @@
     <br>
     <br>
     <div class="container">
-      <ul class="collapsible">
-        <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
+      <ul id="task_Renderer" class="collapsible">
         
       </ul>
       <div class="center">
-          <a data-target="add_quest" class="sidenav-trigger waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Quest</a>
+        <a id="addtask" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Task</a>
+        <a id="addgroup" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Group</a>
       </div>
+
+      <br>
+      <br>
     </div>
 
   </div>
@@ -222,19 +172,6 @@
         <div class="col s8 m8">
 
           <div class="col s12 m12">
-            <div class="card blue-grey darken-1">
-              <div class="collection">
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-              </div>
-              <a class="tooltipped btn-floating halfway-fab waves-effect waves-light red" data-position="bottom"
-                data-tooltip="get a quest"><i class="material-icons">add</i></a>
-            </div>
-          </div>
-
-          <div class="col s12 m12">
             <div class="card indigo lighten-5">
               <table>
                 <thead>
@@ -245,54 +182,40 @@
                         <span></span>
                       </label>
                     </th>
-                    <th>Name</th>
-                    <th>Item Name</th>
-                    <th>Item Price</th>
+                    <th>Task Name</th>
+                    <th>task point</th>
+                    <th>tag</th>
+                    <th></th>
                   </tr>
                 </thead>
 
-                <tbody>
-                  <tr>
-                    <td>
-                      <label>
-                        <input type="checkbox" />
-                        <span></span>
-                      </label>
-                    </td>
-                    <td>Alvin</td>
-                    <td>Eclair</td>
-                    <td>$0.87</td>
-                  </tr>
+                <tbody id="current_task_Renderer">
 
-                  <tr>
-
-                    <td>
-                      <label>
-                        <input type="checkbox" />
-                        <span></span>
-                      </label>
-                    </td>
-
-                    <td>Alan</td>
-                    <td>Jellybean</td>
-                    <td>$3.76</td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <label>
-                        <input type="checkbox" />
-                        <span></span>
-                      </label>
-                    </td>
-
-                    <td>Jonathan</td>
-                    <td>Lollipop</td>
-                    <td>$7.00</td>
-                  </tr>
                 </tbody>
               </table>
-              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <a id="getcurrentbtn" class="tooltipped btn-floating halfway-fab waves-effect waves-light red"
+                data-position="bottom" data-tooltip="get a quest"><i class="material-icons">add</i></a>
+            </div>
+          </div>
+
+          <div class="col s12 m12">
+            <div class="card indigo lighten-5">
+              <div class="collection">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>group Name</th>
+                      <th>ddl</th>
+                      <th>progress</th>
+                    </tr>
+                  </thead>
+
+                  <tbody id="current_group_Renderer">
+
+                  </tbody>
+                </table>
+              </div>
+
             </div>
           </div>
 
@@ -302,23 +225,41 @@
 
           <div class="col s12 m12">
 
-            <div class="card blue-grey darken-1">
-
-              <div class="collection">
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
-                <a href="#!" class="collection-item">Alvin</a>
+            <div class="card indigo lighten-5">
+              <div class="card-content black-text">
+                <span class="card-title">Stat</span>
+                <i>total point 1000</i>
               </div>
 
-              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <div class="card-action">
+                <a href="#" data-target="system" class="sidenav-trigger waves-effect waves-red btn-flat">
+                  open menu
+                </a>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col s12 m12">
+
+            <div class="card blue-grey darken-1">
+
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">NotePad</label>
+                  </div>
+                </div>
+              </form>
+
             </div>
 
           </div>
 
         </div>
+
 
       </div>
 
@@ -337,64 +278,30 @@
     <div class="container z-depth-2">
 
       <ul id="shop_Renderer" class="collection">
-
-      <ul class="collection">
-        <li class="collection-item avatar">
-          <img src="images/yuna.jpg" alt="" class="circle">
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p> 
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle">folder</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle green">insert_chart</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-          <i class="material-icons circle red">play_arrow</i>
-          <span class="title">Title</span>
-          <p>First Line <br>
-            Second Line
-          </p>
-          <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-
-
-        
-
-        
+        <!--Here Render the shoppable item-->
 
       </ul>
-      <div id="addshoplist" class="center">
-          <a  href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i></a>
-      </div>
+
     </div>
+    <div id="addshoplist" class="center">
+      <a href="#!" class="waves-effect waves-red btn-flat"><i class="material-icons">add</i>Add Item</a>
+    </div>
+
+    <br>
+    <br>
 
   </div>
   <!-------------------------------------------------------------------->
   <!-------------------------------------------------------------------->
 
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large yellow">
+    <a data-target="system" class="sidenav-trigger btn-floating btn-large yellow">
       <i class="large material-icons">all_inclusive</i>
     </a>
     <ul>
-      <li><a data-target="system" class="sidenav-trigger btn-floating blue"><i class="material-icons">menu</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">menu</i></a></li>
       <li><a id="developfunct" class="btn-floating grey darken-1"><i class="material-icons">build</i></a></li>
-      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">autorenew</i></a></li>
       <li><a id="quit-btn1" class="btn-floating red"><i class="material-icons">power_settings_new</i></a></li>
     </ul>
   </div>

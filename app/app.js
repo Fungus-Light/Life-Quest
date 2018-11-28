@@ -14,6 +14,8 @@ process.env.NODE_ENV = 'develop'//mark the running edition
 //运行状态标志
 
 let mainWindow, testwin = null;
+let getTaskWin=null,addTaskWin=null,addItemWin=null,addGroupWin=null;
+let hasSubWindows=false;
 //主窗口、测试窗口的变量
 
 //the window objects
@@ -34,6 +36,7 @@ function CreatSizedWindow(w, h, hasFrame, _resizable, isShow, _parent) {
 
 //main logic area
 app.on('ready', function () {
+    hasSubWindows=false;
     mainWindow = CreatSizedWindow(800, 720, true, true, true, null)
     mainWindow.loadURL(FormatPathToURL("./mainWindow.html"));//this load the mainWindow page
     //if mainWindow is closed,end the application.
@@ -61,4 +64,73 @@ ipcMain.on("testwin", function () {
     }
 });//接到'testwin'消息，开启测试窗口
 
+ipcMain.on("gettask",function(){
+    console.log("gettask");
+    
+    if (getTaskWin == null&&hasSubWindows==false) {
+        getTaskWin = CreatSizedWindow(400, 720, true, true, true, mainWindow);
+        getTaskWin.loadURL(FormatPathToURL("./windows/subwindows/getaquest.html"));
+        hasSubWindows=true;
+        getTaskWin.on('closed', function () {
+            getTaskWin = null;
+            hasSubWindows=false;
+        })
+    }
+});
+//---------------------------------------------------
+ipcMain.on("additem",function(){
+    console.log("addItem");
+    
+    if (addItemWin == null&&hasSubWindows==false) {
+        addItemWin = CreatSizedWindow(400, 720, true, true, true, mainWindow);
+        addItemWin.loadURL(FormatPathToURL("./windows/subwindows/additem.html"));
+        hasSubWindows=true;
+        addItemWin.on('closed', function () {
+            addItemWin = null;
+            hasSubWindows=false;
+        })
+    }
+});
 
+ipcMain.on("quit_item",function(){
+    addItemWin.close();
+});
+
+ipcMain.on("add_item",function(){
+    mainWindow.webContents.send('add_item');
+});
+
+//above is add_item functions 
+
+ipcMain.on("addtask",function(){
+    if(addTaskWin==null&&hasSubWindows==false){
+        addTaskWin = CreatSizedWindow(400, 720, true, true, true, mainWindow);
+        addTaskWin.loadURL(FormatPathToURL("./windows/subwindows/addquest.html"));
+        hasSubWindows=true;
+        addTaskWin.on('closed', function () {
+            addTaskWin = null;
+            hasSubWindows=false;
+        })
+    }
+});
+
+ipcMain.on("quit-quest",function(){
+    addTaskWin.close();
+});
+
+ipcMain.on("add_quest",function(){
+    mainWindow.webContents.send("add_quest");
+    addTaskWin.close();
+});
+
+ipcMain.on("addgroup",function(){
+    if(addGroupWin==null&&hasSubWindows==false){
+        addGroupWin = CreatSizedWindow(400, 720, true, true, true, mainWindow);
+        addGroupWin.loadURL(FormatPathToURL("./windows/subwindows/addgroup.html"));
+        hasSubWindows=true;
+        addGroupWin.on('closed', function () {
+            addGroupWin = null;
+            hasSubWindows=false;
+        })
+    }
+});
