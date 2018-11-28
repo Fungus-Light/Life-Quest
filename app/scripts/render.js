@@ -90,9 +90,9 @@ make up quest
 </li>
 */
 
-function AddTask(_title,_icon, _point, _description, _time) {
+function AddTask(Renderer,_title,_icon, _point, _description, _time) {
   var temp = MakeUpTask(_title, _icon, _point, _description, _time)
-  task_Renderer.appendChild(temp);
+  Renderer.appendChild(temp);
 }
 
 function MakeUpTask(_title, _icon, _point, _description, _time) {
@@ -233,3 +233,70 @@ function MakeUpCurrentGroup(_name,_ddl,_progress){
   return temp;
 }
 
+/*
+  <li>
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+    
+      <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
+    </div>
+    
+  </li>
+*/
+
+function MakeUpGroup(_title, _icon, _point, _description, _time,_tasks) {
+  var temp = MakeUpElement("li", "", "");
+
+  var icon = MakeUpElement("i", "material-icons", _icon);
+  var title = MakeUpElement("div", "collapsible-header", "");
+  var text = document.createTextNode(_title);
+  title.appendChild(icon);
+  title.appendChild(text)
+
+  var description = MakeUpElement("div", "collapsible-body", "");
+  var des1 = MakeUpElement("div", "", "奖励点数" + _point);
+  var des2 = MakeUpElement("div", "", _description);
+  var des3 = MakeUpElement("div", "", _time);
+  description.appendChild(des1);
+  description.appendChild(des2);
+  description.appendChild(des3);
+
+  if(_tasks.length>0){
+    var subReander=MakeUpElement("ul","collapsible","");
+    for(var i=0;i<_tasks.length;i++){
+      var subtemp=_tasks[i];
+      AddTask(subReander,subtemp.title,subtemp.icon,subtemp.point,subtemp.description,subtemp._time);
+    }
+    description.appendChild(subReander);
+  }
+
+  var buttom1 = MakeUpElement("div", "waves-effect waves-green btn-flat", "");
+  buttom1.setAttribute("href", "#!");
+  var btnicon1 = MakeUpElement("i", "material-icons", "edit");
+  buttom1.appendChild(btnicon1);
+  var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
+  buttom2.setAttribute("href", "#!");
+  var btnicon2 = MakeUpElement("i", "material-icons", "close");
+  buttom2.appendChild(btnicon2);
+  description.appendChild(buttom1);
+  description.appendChild(buttom2);
+
+  temp.appendChild(title);
+  temp.appendChild(description);
+
+
+  return temp;
+}

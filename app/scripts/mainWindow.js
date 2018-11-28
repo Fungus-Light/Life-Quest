@@ -51,5 +51,5 @@ ipcRenderer.on("add_item",function(){
 ipcRenderer.on("add_quest",function(){
   var newTask=JSON.parse(localStorage.getItem("temp-quest"));
   console.log(newTask);
-  AddTask(newTask.title,newTask.icon, newTask.point, newTask.description,newTask.time)
+  AddTask(task_Renderer,newTask.title,newTask.icon, newTask.point, newTask.description,newTask.time)
 });
