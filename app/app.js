@@ -170,3 +170,10 @@ ipcMain.on("add_group",function(){
     mainWindow.webContents.send("add_group");
     addGroupWin.close();
 });
+
+ipcMain.on("add_current",function(){
+    if(localStorage.getItem("temp-current-task")!=""){
+        mainWindow.webContents.send("add_current");
+    }
+    getTaskWin.close();
+})

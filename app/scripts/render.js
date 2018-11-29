@@ -1,21 +1,21 @@
 M.AutoInit();
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.collapsible');
   var instances = M.Collapsible.init(elems);
 });
 
-var Itenid = 0;
-
 const RenderId_shop = "shop_Renderer";
 const RenderId_task = "task_Renderer";
+const RenderId_group = "group_Renderer"
 const RenderId_current_task = "current_task_Renderer";
-const RenderId_current_group="current_group_Renderer";
+const RenderId_current_group = "current_group_Renderer";
 
 const shop_Renderer = document.getElementById(RenderId_shop);
 const task_Renderer = document.getElementById(RenderId_task);
+const group_Renderer = document.getElementById(RenderId_group);
 const current_task_Renderer = document.getElementById(RenderId_current_task);
-const current_group_Renderer=document.getElementById(RenderId_current_group);
+const current_group_Renderer = document.getElementById(RenderId_current_group);
 
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
@@ -45,14 +45,14 @@ function ClearAll(RenderId) {
     </li>
 */
 function AddItem(_title, _icon, _point, _description) {
-  Itenid++;
+  item_num++;
   var temp = MakeUpItem(_title, _icon, _point, _description);
-  temp.setAttribute("id", "item" + Itenid);
+  temp.setAttribute("id",item_num.toString());
   shop_Renderer.appendChild(temp);
 }
 
 function MakeUpItem(_title, _icon, _point, _description) {
-  var temp = MakeUpElement("li", "collection-item avatar","");
+  var temp = MakeUpElement("li", "collection-item avatar", "");
 
   var icon = MakeUpElement("i", "material-icons circle blue", _icon);
   var title = MakeUpElement("span", "title", _title);
@@ -68,6 +68,24 @@ function MakeUpItem(_title, _icon, _point, _description) {
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
+  buttom2.addEventListener('click', function () {
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = shop_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        shop_Renderer.removeChild(shop_Renderer.children[i]);
+        console.log(item_line.splice(i, 1));
+      }
+    }
+  });
   buttom.appendChild(buttom1);
   buttom.appendChild(buttom2);
 
@@ -96,8 +114,10 @@ make up quest
 </li>
 */
 
-function AddTask(_title,_icon, _point, _description, _time) {
-  var temp = MakeUpTask(_title, _icon, _point, _description, _time)
+function AddTask(_title, _icon, _point, _description, _time) {
+  task_num++;
+  var temp = MakeUpTask(_title, _icon, _point, _description, _time);
+  temp.setAttribute("id",task_num.toString());
   task_Renderer.appendChild(temp);
 }
 
@@ -126,12 +146,29 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
+  buttom2.addEventListener('click',function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        task_Renderer.removeChild(task_Renderer.children[i]);
+        console.log(task_line.splice(i, 1));
+      }
+    }
+  })
   description.appendChild(buttom1);
   description.appendChild(buttom2);
 
   temp.appendChild(title);
   temp.appendChild(description);
-
 
   return temp;
 }
@@ -163,32 +200,32 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
 </tr>
 */
 
-function AddCurrent(_name,_point,_tag){
-  var temp=MakeUpCurrent("draw","100","study");
+function AddCurrent(_name, _point, _tag) {
+  var temp = MakeUpCurrent(_name, _point, _tag);
   current_task_Renderer.appendChild(temp);
 }
 
-function MakeUpCurrent(_name,_point,_tag){
-  var temp=MakeUpElement("tr","","");
+function MakeUpCurrent(_name, _point, _tag) {
+  var temp = MakeUpElement("tr", "", "");
 
-  var checkbox=MakeUpElement("td","","");
-  var boxlabel=MakeUpElement("label","","");
-  var ckb=MakeUpElement("input","","");
-  ckb.setAttribute("type","checkbox");
-  var slider=MakeUpElement("span","","");
+  var checkbox = MakeUpElement("td", "", "");
+  var boxlabel = MakeUpElement("label", "", "");
+  var ckb = MakeUpElement("input", "", "");
+  ckb.setAttribute("type", "checkbox");
+  var slider = MakeUpElement("span", "", "");
   boxlabel.appendChild(ckb);
   boxlabel.appendChild(slider);
   checkbox.appendChild(boxlabel);
 
-  var name=MakeUpElement("td","",_name);
+  var name = MakeUpElement("td", "", _name);
 
-  var point=MakeUpElement("td","",_point);
+  var point = MakeUpElement("td", "", _point);
 
-  var tag=MakeUpElement("td","",_tag);
+  var tag = MakeUpElement("td", "", _tag);
 
-  var delbtn=MakeUpElement("td","","");
-  var btn=MakeUpElement("a","waves-effect waves-red btn-small-flat","");
-  var icon=MakeUpElement("a","material-icons","close");
+  var delbtn = MakeUpElement("td", "", "");
+  var btn = MakeUpElement("a", "waves-effect waves-red btn-small-flat", "");
+  var icon = MakeUpElement("a", "material-icons", "close");
   btn.appendChild(icon);
   delbtn.appendChild(btn);
 
@@ -198,6 +235,15 @@ function MakeUpCurrent(_name,_point,_tag){
   temp.appendChild(tag);
   temp.appendChild(delbtn);
   return temp;
+}
+
+function refreshCurrent(){
+  current_task_Renderer.innerHTML="";
+  if(current_task_line.length>0){
+    for(var i=0;i<current_task_Renderer.length;i++){
+      
+    }
+  }
 }
 
 /*
@@ -213,21 +259,21 @@ function MakeUpCurrent(_name,_point,_tag){
 </tr>
 */
 
-function AddCurrentGroup(_name,_ddl,_progress){
-  var temp=MakeUpCurrentGroup("_name","_ddl","50%");
+function AddCurrentGroup(_name, _ddl, _progress) {
+  var temp = MakeUpCurrentGroup("_name", "_ddl", "50%");
   current_group_Renderer.appendChild(temp);
 }
 
-function MakeUpCurrentGroup(_name,_ddl,_progress){
-  var temp=MakeUpElement("tr","","");
+function MakeUpCurrentGroup(_name, _ddl, _progress) {
+  var temp = MakeUpElement("tr", "", "");
 
-  var name=MakeUpElement("td","",_name);
-  var ddl=MakeUpElement("td","",_ddl);
+  var name = MakeUpElement("td", "", _name);
+  var ddl = MakeUpElement("td", "", _ddl);
 
-  var progressbar=MakeUpElement("td","","");
-  var progs=MakeUpElement("div","progress","");
-  var bar=MakeUpElement("div","determinate","");
-  bar.style.width=_progress;
+  var progressbar = MakeUpElement("td", "", "");
+  var progs = MakeUpElement("div", "progress", "");
+  var bar = MakeUpElement("div", "determinate", "");
+  bar.style.width = _progress;
 
   progs.appendChild(bar);
   progressbar.appendChild(progs);
@@ -262,12 +308,12 @@ function MakeUpCurrentGroup(_name,_ddl,_progress){
     
   </li>
 */
-function AddGroup(_title, _icon, _point, _description, _time,_tasks){
-  var temp=MakeUpGroup(_title, _icon, _point, _description, _time,_tasks);
-  task_Renderer.appendChild(temp);
+function AddGroup(_title, _icon, _point, _description, _time, _tasks) {
+  var temp = MakeUpGroup(_title, _icon, _point, _description, _time, _tasks);
+  group_Renderer.appendChild(temp);
 }
 
-function MakeUpGroup(_title, _icon, _point, _description, _time,_tasks) {
+function MakeUpGroup(_title, _icon, _point, _description, _time, _tasks) {
   var temp = MakeUpElement("li", "", "");
 
   var icon = MakeUpElement("i", "material-icons", _icon);
@@ -283,11 +329,11 @@ function MakeUpGroup(_title, _icon, _point, _description, _time,_tasks) {
   description.appendChild(des1);
   description.appendChild(des2);
   description.appendChild(des3);
-  if(_tasks.length>0){
-    var sub_Reander=MakeUpElement("ul","collapsible","");
-    for(var i=0;i<_tasks.length;i++){
-      var subtemp=_tasks[i];
-      var node=MakeUpTask(subtemp.title,subtemp.icon,subtemp.point,subtemp.description,subtemp.time);
+  if (_tasks.length > 0) {
+    var sub_Reander = MakeUpElement("ul", "collapsible", "");
+    for (var i = 0; i < _tasks.length; i++) {
+      var subtemp = _tasks[i];
+      var node = MakeUpTask(subtemp.title, subtemp.icon, subtemp.point, subtemp.description, subtemp.ddl);
       sub_Reander.appendChild(node);
     }
     M.Collapsible.init(sub_Reander);

@@ -1,4 +1,7 @@
 M.AutoInit();
+
+var num=0;
+
 const electron = require('electron');
 const { ipcRenderer } = electron;
 
@@ -93,7 +96,9 @@ function MakeUpElement(_tag, _classname, _innerText) {
 }
 
 function AddTask(_title, _icon, _point, _description, _time) {
-    var temp = MakeUpTask(_title, _icon, _point, _description, _time)
+    num++;
+    var temp = MakeUpTask(_title, _icon, _point, _description, _time);
+    temp.setAttribute("id",num.toString());
     subRenderer.appendChild(temp);
 }
 
@@ -122,6 +127,25 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
     buttom2.setAttribute("href", "#!");
     var btnicon2 = MakeUpElement("i", "material-icons", "close");
     buttom2.appendChild(btnicon2);
+    buttom2.addEventListener("click",function(){
+        var _id=this.parentNode.parentNode.getAttribute("id");
+        console.log(_id);
+        var line=new Array();
+        var _line=subRenderer.childNodes;
+        for(var i=0;i<_line.length;i++){
+            if(_line[i].nodeType===1){
+                line.push(_line[i]);
+            }
+        }
+        for(var i=0;i<line.length;i++){
+            console.log();
+            if(line[i].getAttribute("id")==_id){
+                subRenderer.removeChild(subRenderer.children[i]);
+                console.log(taskline.splice(i,1));
+            }
+        }
+        
+    })
     description.appendChild(buttom1);
     description.appendChild(buttom2);
 
@@ -131,3 +155,4 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
 
     return temp;
 }
+

@@ -26,3 +26,12 @@ function Group(_title,_point,_descrip,_ddl,_tag,_icon,_tasks){
     this.icon=_icon;
     this.tasks=_tasks;
 }
+
+var task_line=new Array();
+var task_num=0;
+
+var item_line=new Array();
+var item_num=0;
+
+var current_task_line=new Array();
+var current_task_num=0;
