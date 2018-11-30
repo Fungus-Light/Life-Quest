@@ -1,15 +1,28 @@
 M.AutoInit();
-var Itenid = 0;
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.collapsible');
+  var instances = M.Collapsible.init(elems);
+});
 
 const RenderId_shop = "shop_Renderer";
 const RenderId_task = "task_Renderer";
+const RenderId_group = "group_Renderer"
 const RenderId_current_task = "current_task_Renderer";
-const RenderId_current_group="current_group_Renderer";
+const RenderId_current_group = "current_group_Renderer";
 
 const shop_Renderer = document.getElementById(RenderId_shop);
 const task_Renderer = document.getElementById(RenderId_task);
+const group_Renderer = document.getElementById(RenderId_group);
 const current_task_Renderer = document.getElementById(RenderId_current_task);
-const current_group_Renderer=document.getElementById(RenderId_current_group);
+const current_group_Renderer = document.getElementById(RenderId_current_group);
+
+const point_stat=document.getElementById("point_stat");
+const note_pad=document.getElementById("note_pad");
+note_pad.addEventListener("change",function(){
+  notePad=note_pad.nodeValue;
+  M.textareaAutoResize(note_pad);
+});
 
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
@@ -39,14 +52,14 @@ function ClearAll(RenderId) {
     </li>
 */
 function AddItem(_title, _icon, _point, _description) {
-  Itenid++;
+  item_num++;
   var temp = MakeUpItem(_title, _icon, _point, _description);
-  temp.setAttribute("id", "item" + Itenid);
+  temp.setAttribute("id","i"+item_num);
   shop_Renderer.appendChild(temp);
 }
 
 function MakeUpItem(_title, _icon, _point, _description) {
-  var temp = MakeUpElement("li", "collection-item avatar","");
+  var temp = MakeUpElement("li", "collection-item avatar", "");
 
   var icon = MakeUpElement("i", "material-icons circle blue", _icon);
   var title = MakeUpElement("span", "title", _title);
@@ -58,10 +71,49 @@ function MakeUpItem(_title, _icon, _point, _description) {
   buttom1.setAttribute("href", "#!");
   var btnicon1 = MakeUpElement("i", "material-icons", "check");
   buttom1.appendChild(btnicon1);
+  buttom1.addEventListener("click",function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = shop_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        console.log(parseInt(item_line[i].point));
+        
+        Minus_point(parseInt(item_line[i].point));
+        
+      }
+    }
+    
+  });
   var buttom2 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
+  buttom2.addEventListener('click', function () {
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = shop_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        shop_Renderer.removeChild(shop_Renderer.children[i]);
+        console.log(item_line.splice(i, 1));
+      }
+    }
+  });
   buttom.appendChild(buttom1);
   buttom.appendChild(buttom2);
 
@@ -73,6 +125,7 @@ function MakeUpItem(_title, _icon, _point, _description) {
 
   return temp;
 }
+
 
 /*
 make up quest
@@ -90,8 +143,10 @@ make up quest
 </li>
 */
 
-function AddTask(_title,_icon, _point, _description, _time) {
-  var temp = MakeUpTask(_title, _icon, _point, _description, _time)
+function AddTask(_title, _icon, _point, _description, _time) {
+  task_num++;
+  var temp = MakeUpTask(_title, _icon, _point, _description, _time);
+  temp.setAttribute("id",task_num.toString());
   task_Renderer.appendChild(temp);
 }
 
@@ -116,16 +171,53 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
   buttom1.setAttribute("href", "#!");
   var btnicon1 = MakeUpElement("i", "material-icons", "edit");
   buttom1.appendChild(btnicon1);
+  buttom1.addEventListener('click',function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        localStorage.removeItem("task-to-edit");
+        localStorage.setItem("task-to-edit",JSON.stringify(task_line[i]));
+        edit_i=i;
+        ipcRenderer.send("edit-task");
+      }
+    }
+  })
   var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
   buttom2.appendChild(btnicon2);
+  buttom2.addEventListener('click',function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        task_Renderer.removeChild(task_Renderer.children[i]);
+        console.log(task_line.splice(i, 1));
+      }
+    }
+  });
   description.appendChild(buttom1);
   description.appendChild(buttom2);
 
   temp.appendChild(title);
   temp.appendChild(description);
-
 
   return temp;
 }
@@ -157,35 +249,93 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
 </tr>
 */
 
-function AddCurrent(_name,_point,_tag){
-  var temp=MakeUpCurrent("draw","100","study");
+function AddCurrent(_name, _point, _tag) {
+  current_task_num++;
+  var temp = MakeUpCurrent(_name, _point, _tag);
+  temp.setAttribute("id","c"+current_task_num);
   current_task_Renderer.appendChild(temp);
 }
 
-function MakeUpCurrent(_name,_point,_tag){
-  var temp=MakeUpElement("tr","","");
+function MakeUpCurrent(_name, _point, _tag) {
+  var tag_name="其他";
+  switch(_tag){
+    case "1":
+      tag_name="学习";
+      break;
+    case "2":
+      tag_name="健康";
+      break;
+    case "3":
+      tag_name="运动";
+      break;
+    case "4":
+      tag_name="其他";
+      break;
+  }
+  var temp = MakeUpElement("tr", "", "");
 
-  var checkbox=MakeUpElement("td","","");
-  var boxlabel=MakeUpElement("label","","");
-  var ckb=MakeUpElement("input","","");
-  ckb.setAttribute("type","checkbox");
-  var slider=MakeUpElement("span","","");
+  var checkbox = MakeUpElement("td", "", "");
+  var boxlabel = MakeUpElement("label", "", "");
+  var ckb = MakeUpElement("input", "", "");
+  ckb.setAttribute("type", "checkbox");
+  ckb.addEventListener("change",function(){
+    if(ckb.checked==true){
+    var _id = this.parentNode.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = current_task_Renderer.childNodes;
+
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        current_task_Renderer.removeChild(current_task_Renderer.children[i]);
+        Add_Point(parseInt(current_task_line[i].point))
+        console.log(current_task_line.splice(i, 1));
+      }
+    }
+
+  }
+});
+  var slider = MakeUpElement("span", "", "");
   boxlabel.appendChild(ckb);
   boxlabel.appendChild(slider);
   checkbox.appendChild(boxlabel);
 
-  var name=MakeUpElement("td","",_name);
+  var name = MakeUpElement("td", "", _name);
 
-  var point=MakeUpElement("td","",_point);
+  var point = MakeUpElement("td", "", _point);
 
-  var tag=MakeUpElement("td","",_tag);
+  var tag = MakeUpElement("td", "", tag_name);
 
-  var delbtn=MakeUpElement("td","","");
-  var btn=MakeUpElement("a","waves-effect waves-red btn-small-flat","");
-  var icon=MakeUpElement("a","material-icons","close");
+  var delbtn = MakeUpElement("td", "", "");
+  var btn = MakeUpElement("a", "waves-effect waves-red btn-small-flat", "");
+  var icon = MakeUpElement("a", "material-icons", "close");
   btn.appendChild(icon);
+  btn.addEventListener("click",function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = current_task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        current_task_Renderer.removeChild(current_task_Renderer.children[i]);
+        console.log(current_task_line.splice(i, 1));
+      }
+    }
+  });
   delbtn.appendChild(btn);
-
   temp.appendChild(checkbox);
   temp.appendChild(name);
   temp.appendChild(point);
@@ -193,6 +343,8 @@ function MakeUpCurrent(_name,_point,_tag){
   temp.appendChild(delbtn);
   return temp;
 }
+
+
 
 /*
 <tr>
@@ -207,21 +359,21 @@ function MakeUpCurrent(_name,_point,_tag){
 </tr>
 */
 
-function AddCurrentGroup(_name,_ddl,_progress){
-  var temp=MakeUpCurrentGroup("_name","_ddl","50%");
+function AddCurrentGroup(_name, _ddl, _progress) {
+  var temp = MakeUpCurrentGroup("_name", "_ddl", "50%");
   current_group_Renderer.appendChild(temp);
 }
 
-function MakeUpCurrentGroup(_name,_ddl,_progress){
-  var temp=MakeUpElement("tr","","");
+function MakeUpCurrentGroup(_name, _ddl, _progress) {
+  var temp = MakeUpElement("tr", "", "");
 
-  var name=MakeUpElement("td","",_name);
-  var ddl=MakeUpElement("td","",_ddl);
+  var name = MakeUpElement("td", "", _name);
+  var ddl = MakeUpElement("td", "", _ddl);
 
-  var progressbar=MakeUpElement("td","","");
-  var progs=MakeUpElement("div","progress","");
-  var bar=MakeUpElement("div","determinate","");
-  bar.style.width=_progress;
+  var progressbar = MakeUpElement("td", "", "");
+  var progs = MakeUpElement("div", "progress", "");
+  var bar = MakeUpElement("div", "determinate", "");
+  bar.style.width = _progress;
 
   progs.appendChild(bar);
   progressbar.appendChild(progs);
@@ -231,5 +383,127 @@ function MakeUpCurrentGroup(_name,_ddl,_progress){
   temp.appendChild(progressbar);
 
   return temp;
+}
+
+/*
+  <li>
+    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span>
+    
+      <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
+    </div>
+    
+  </li>
+*/
+function AddGroup(_title, _icon, _point, _description, _time, _tasks) {
+  var temp = MakeUpGroup(_title, _icon, _point, _description, _time, _tasks);
+  group_Renderer.appendChild(temp);
+}
+
+function MakeUpGroup(_title, _icon, _point, _description, _time, _tasks) {
+  var temp = MakeUpElement("li", "", "");
+
+  var icon = MakeUpElement("i", "material-icons", _icon);
+  var title = MakeUpElement("div", "collapsible-header", "");
+  var text = document.createTextNode(_title);
+  title.appendChild(icon);
+  title.appendChild(text)
+
+  var description = MakeUpElement("div", "collapsible-body", "");
+  var des1 = MakeUpElement("div", "", "奖励点数" + _point);
+  var des2 = MakeUpElement("div", "", _description);
+  var des3 = MakeUpElement("div", "", _time);
+  description.appendChild(des1);
+  description.appendChild(des2);
+  description.appendChild(des3);
+  if (_tasks.length > 0) {
+    var sub_Reander = MakeUpElement("ul", "collapsible", "");
+    for (var i = 0; i < _tasks.length; i++) {
+      var subtemp = _tasks[i];
+      var node = MakeUpTask(subtemp.title, subtemp.icon, subtemp.point, subtemp.description, subtemp.ddl);
+      sub_Reander.appendChild(node);
+    }
+    M.Collapsible.init(sub_Reander);
+    description.appendChild(sub_Reander);
+  }
+
+  var buttom1 = MakeUpElement("div", "waves-effect waves-green btn-flat", "");
+  buttom1.setAttribute("href", "#!");
+  var btnicon1 = MakeUpElement("i", "material-icons", "edit");
+  buttom1.appendChild(btnicon1);
+  var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
+  buttom2.setAttribute("href", "#!");
+  var btnicon2 = MakeUpElement("i", "material-icons", "close");
+  buttom2.appendChild(btnicon2);
+  description.appendChild(buttom1);
+  description.appendChild(buttom2);
+
+  temp.appendChild(title);
+  temp.appendChild(description);
+
+
+  return temp;
+}
+
+
+/*========================================== */
+function refreshCurrent(){
+  current_task_Renderer.innerHTML="";
+  for(var i=0;i<current_task_line.length;i++){
+    var temp=current_task_line[i];
+    AddCurrent(temp.title,temp.point,temp.tag);
+  }
+}
+
+function refreshPoint(){
+  point_stat.innerText="total point :"+total_point;
+}
+
+
+function RefreshItem(){
+  for(var i=0;i<item_line.length;i++){
+  item_num++;
+  var temp_item=item_line[i];
+  var temp = MakeUpItem(temp_item.title, temp_item.icon, temp_item.point, temp_item.description);
+  temp.setAttribute("id","i"+item_num);
+  shop_Renderer.appendChild(temp);
+  }
+}
+
+function RefreshTask(){
+  task_Renderer.innerHTML="";
+  for(var i=0;i<task_line.length;i++){
+  task_num++;
+  var temp_task=task_line[i];
+  var temp = MakeUpTask(temp_task.title, temp_task.icon, temp_task.point, temp_task.description, temp_task.time);
+  temp.setAttribute("id","t"+task_num);
+  task_Renderer.appendChild(temp);
+  }
+}
+
+function RefreshNotePad(){
+  note_pad.value=database.notePad;
+  M.textareaAutoResize(note_pad);
+}
+
+function RefreshAll(){
+  refreshPoint();
+  RefreshNotePad();
+  refreshCurrent();
+  RefreshItem();
+  RefreshTask();
 }
 

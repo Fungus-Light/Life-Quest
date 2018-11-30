@@ -12,7 +12,7 @@
     <body >
 
       <div style="-webkit-app-region: drag" class="navbar-fixed">
-        <nav>
+        <nav class="pink lighten-2">
           <div class="nav-wrapper">
             <a href="#!" class="brand-logo">添加任务组</a>
           </div>
@@ -29,8 +29,11 @@
             </div>
 
             <div class="input-field col s11">
-              <input id="group-point" type="text" class="validate">
-              <label for="group-point">奖励点数</label>
+                    <p class="range-field">
+                            <input id="group-point" type="range" min="0" max="300" />
+                          </p>
+            
+                          <label for="group-point">奖励点数</label>
             </div>
 
             <div class="input-field col s11">
@@ -45,30 +48,13 @@
 
           </div>
 
-          <div class="input-field col s8">
-                <p id="freqcbar" class="range-field">
-                  <input id="freqcrange" type="range" id="test5" min="0" max="30" />
-                </p>
-  
-                <label for="freqcbar">次</label>
-              </div>
-            
-            <div class="input-field col s3">
-                <select id="frequence">
-                  <option value="" disabled selected>选择频率</option>
-                  <option value="1">日</option>
-                  <option value="2">周</option>
-                  <option value="3">月</option>
-                </select>
-                <label>每</label>
-            </div>
-
             <div class="input-field col s11">
-                <select>
+                <select id="group-tag">
                   <option value="" disabled selected>选择你的标签</option>
                   <option value="1">学习</option>
                   <option value="2">健康</option>
                   <option value="3">运动</option>
+                  <option value="4">其他</option>
                 </select>
                 <label>标签</label>
             </div>
@@ -76,27 +62,19 @@
         </form>
 
         <div class="col s8">
-            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a id="addsubtask" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
         </div>
 
-        <ul class="collapsible col s11">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
+        <ul id="subRenderer" class="collapsible col s11">
             
-            <li>
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
         </ul>
 
         <div class="col s11">
-            <button class="btn waves-effect waves-light" type="submit" name="action">确认
+            <button id="submmit" class="btn waves-effect waves-light" type="submit" name="action">确认
                 <i class="material-icons right">send</i>
             </button>
 
-            <a class="waves-effect waves-light btn">取消</a>
+            <a id="leave" class="waves-effect waves-light btn">取消</a>
         </div>
 
       </div>

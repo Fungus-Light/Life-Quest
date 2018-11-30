@@ -14,7 +14,7 @@
 <body>
 
     <div style="-webkit-app-region: drag" class="navbar-fixed">
-        <nav>
+        <nav class="pink lighten-2">
             <div class="nav-wrapper">
                 <a href="#!" class="center brand-logo">get task</a>
             </div>
@@ -22,56 +22,26 @@
     </div>
 
     <div class="container">
-        <ul class="collection with-header">
-            <li class="collection-header">
-                <h4>Available</h4>
-            </li>
+ 
+            <h4 class="truncate">可选任务</h4>
 
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
+        <ul id="renderer-available" class="collection with-header">
+
         </ul>
 
+  
+            <h4 class="truncate">已选任务</h4>
 
+        <ul id="renderer-selected" class="collection with-header">
 
-        <ul class="collection with-header">
-
-            <li class="collection-header">
-                <h4>Selected</h4>
-            </li>
-            <li class="collection-item">
-                <div>Alvin
-                    <a href="#!" class="secondary-content">
-                        <i class="material-icons">send</i>
-                    </a>
-                </div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
-            <li class="collection-item">
-                <div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div>
-            </li>
         </ul>
 
         <div class="center">
-            <button id="submmitquest" class="btn waves-effect waves-light" type="submit" name="action">确认
+            <button id="submmit" class="btn waves-effect waves-light" type="submit" name="action">确认
                 <i class="material-icons right">send</i>
             </button>
 
-            <a id="addquestleave" class="waves-effect waves-light btn">取消</a>
+            <a id="leave" class="waves-effect waves-light btn">取消</a>
         </div>
         <br>
         <br>
@@ -80,7 +50,7 @@
 
 
 
-    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../../materialize/js/materialize.min.js"></script>
     <script src="../../scripts/subWindowscript/gettask.js"></script>
 </body>
 
