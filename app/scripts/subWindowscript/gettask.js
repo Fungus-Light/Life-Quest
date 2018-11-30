@@ -63,6 +63,9 @@ addbtn.addEventListener('click',function(){
 })
 
 const leavebtn = document.getElementById("leave");
+leavebtn.addEventListener("click",function(){
+    ipcRenderer.send("quit_add_current");
+});
 
 function AddAvailable(_name) {
     var temp = MakeUpCollection(_name, false);

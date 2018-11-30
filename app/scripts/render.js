@@ -18,6 +18,11 @@ const current_task_Renderer = document.getElementById(RenderId_current_task);
 const current_group_Renderer = document.getElementById(RenderId_current_group);
 
 const point_stat=document.getElementById("point_stat");
+const note_pad=document.getElementById("note_pad");
+note_pad.addEventListener("change",function(){
+  notePad=note_pad.nodeValue;
+  M.textareaAutoResize(note_pad);
+});
 
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
@@ -121,6 +126,7 @@ function MakeUpItem(_title, _icon, _point, _description) {
   return temp;
 }
 
+
 /*
 make up quest
 <li>
@@ -165,6 +171,26 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
   buttom1.setAttribute("href", "#!");
   var btnicon1 = MakeUpElement("i", "material-icons", "edit");
   buttom1.appendChild(btnicon1);
+  buttom1.addEventListener('click',function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        localStorage.removeItem("task-to-edit");
+        localStorage.setItem("task-to-edit",JSON.stringify(task_line[i]));
+        edit_i=i;
+        ipcRenderer.send("edit-task");
+      }
+    }
+  })
   var buttom2 = MakeUpElement("div", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
@@ -186,7 +212,7 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
         console.log(task_line.splice(i, 1));
       }
     }
-  })
+  });
   description.appendChild(buttom1);
   description.appendChild(buttom2);
 
@@ -231,6 +257,21 @@ function AddCurrent(_name, _point, _tag) {
 }
 
 function MakeUpCurrent(_name, _point, _tag) {
+  var tag_name="其他";
+  switch(_tag){
+    case "1":
+      tag_name="学习";
+      break;
+    case "2":
+      tag_name="健康";
+      break;
+    case "3":
+      tag_name="运动";
+      break;
+    case "4":
+      tag_name="其他";
+      break;
+  }
   var temp = MakeUpElement("tr", "", "");
 
   var checkbox = MakeUpElement("td", "", "");
@@ -270,7 +311,7 @@ function MakeUpCurrent(_name, _point, _tag) {
 
   var point = MakeUpElement("td", "", _point);
 
-  var tag = MakeUpElement("td", "", _tag);
+  var tag = MakeUpElement("td", "", tag_name);
 
   var delbtn = MakeUpElement("td", "", "");
   var btn = MakeUpElement("a", "waves-effect waves-red btn-small-flat", "");
@@ -430,3 +471,39 @@ function refreshCurrent(){
 function refreshPoint(){
   point_stat.innerText="total point :"+total_point;
 }
+
+
+function RefreshItem(){
+  for(var i=0;i<item_line.length;i++){
+  item_num++;
+  var temp_item=item_line[i];
+  var temp = MakeUpItem(temp_item.title, temp_item.icon, temp_item.point, temp_item.description);
+  temp.setAttribute("id","i"+item_num);
+  shop_Renderer.appendChild(temp);
+  }
+}
+
+function RefreshTask(){
+  task_Renderer.innerHTML="";
+  for(var i=0;i<task_line.length;i++){
+  task_num++;
+  var temp_task=task_line[i];
+  var temp = MakeUpTask(temp_task.title, temp_task.icon, temp_task.point, temp_task.description, temp_task.time);
+  temp.setAttribute("id","t"+task_num);
+  task_Renderer.appendChild(temp);
+  }
+}
+
+function RefreshNotePad(){
+  note_pad.value=database.notePad;
+  M.textareaAutoResize(note_pad);
+}
+
+function RefreshAll(){
+  refreshPoint();
+  RefreshNotePad();
+  refreshCurrent();
+  RefreshItem();
+  RefreshTask();
+}
+
