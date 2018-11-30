@@ -15,6 +15,18 @@ function Quest(_title,_point,_descrip,_ddl,_tag,_freqnum,_freq,_icon){
   this.icon=_icon;
 }
 
+function init(){
+  var temp=JSON.parse(localStorage.getItem("task-to-edit"));
+
+  document.getElementById("quest-name").value=temp.title;
+  document.getElementById("quest-point").value=temp.point;
+  document.getElementById("quest-des").value=temp.description;
+  document.getElementById("quest-ddl").value=temp.time;
+  document.getElementById("quest-tag").value=temp.tag;
+  document.getElementById("quest-freqcnum").value=temp.freqnum;
+  document.getElementById("frequence").value=temp.freq;
+}
+
 function createQuest(){
   var temp=new Quest();
   temp.title=document.getElementById("quest-name").value;
@@ -46,14 +58,16 @@ function createQuest(){
 
 const leavebtn=document.getElementById("leave");
 leavebtn.addEventListener("click",function(){
-  ipcRenderer.send("quit_quest");
+  ipcRenderer.send("quit_edit");
 });
 
 const submmit=document.getElementById("submmit");
 submmit.addEventListener("click",function(){
   var temp=createQuest();
   var tempstr=JSON.stringify(temp);
-  localStorage.removeItem("temp-quest")
-  localStorage.setItem("temp-quest",tempstr);
-  ipcRenderer.send("add_quest");
+  localStorage.removeItem("re-temp-quest")
+  localStorage.setItem("re-temp-quest",tempstr);
+  ipcRenderer.send("re-add_quest");
 });
+
+document.ready=init();

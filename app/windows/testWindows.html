@@ -1,21 +1,46 @@
 <html>
-    <head>
-        <title>test windows</title>
-        <!--这里是CSS样式表区域-->
-        <link rel="stylesheet" href="../mdl/iconfont/material-icons.css">
-        <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
 
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-    </head>
-    
-    <body >
+<head>
+    <title>test windows</title>
+    <!--这里是CSS样式表区域-->
+    <link rel="stylesheet" href="../materialize/iconfont/material-icons.css">
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
 
-        <a id="loadbtn" class="waves-effect waves-light btn">load</a>
-        <a id="savebtn" class="waves-effect waves-light btn">save</a>
-        
-        <script src="../scripts/testwindows.js"></script>
-        <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-        
-    </body>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <!--请随意更改这里的样式以达到你要的效果-->
+
+    <div class="row">
+        <div class="col s8 m8">
+            <h1>这是测试窗口</h1>
+            <p>可以随意更改样式，测试功能，代码可以直接在/scripts/testWindows.js 里面修改</p>
+            <form>
+            groupTask:
+            name:<input type="text" name="groupTask" id="name"><br>
+            reward:<input type="text" name="groupTask" id="reward"><br>
+            remark:<input type="text" name="groupTask" id="remark"><br>
+            label:<input type="text" name="groupTask" id="label"><br>
+            frequence:<input type="text" name="groupTask" id="frequence"><br>
+            ddl:<input type="text" name="groupTask" id=""><br>
+            </form>
+        </div>
+
+        <div class="col s4 m4">
+            <h2>tips</h2>
+            <h3>ctrl+shift+i 开发者窗口</h3>
+            <h3>ctrl+shift+r 强制刷新</h3>
+            <h3>ctrl+r 刷新</h3>
+        </div>
+    </div>
+   // <script src="../materialize/jquery/jquery.min.js"></script>
+    <script src="../scripts/testwindows.js"></script>
+    <script src="../scripts/groupTask.js"></script>
+    <script src="../scripts/singleTask.js"></script>
+    <script type="../scripts/text/javascript" src="../materialize/js/materialize.min.js"></script>
+</body>
+
 </html>

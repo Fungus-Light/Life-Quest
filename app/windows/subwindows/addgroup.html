@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>添加任务组</title>
+        <!--这里是CSS样式表区域-->
+        <link rel="stylesheet" href="../../materialize/iconfont/material-icons.css">
+        <link type="text/css" rel="stylesheet" href="../../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    </head>
+    
+    <body >
+
+      <div style="-webkit-app-region: drag" class="navbar-fixed">
+        <nav class="pink lighten-2">
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">添加任务组</a>
+          </div>
+        </nav>
+      </div>
+      
+      <div class="row">
+        <form class="col s12 center-align">
+          <div class="row">
+
+            <div class="input-field col s11 ">
+                <input id="group-name" type="text" class="validate">
+                <label for="group-name">组名</label>
+            </div>
+
+            <div class="input-field col s11">
+                    <p class="range-field">
+                            <input id="group-point" type="range" min="0" max="300" />
+                          </p>
+            
+                          <label for="group-point">奖励点数</label>
+            </div>
+
+            <div class="input-field col s11">
+                <input id="group-des" type="text" class="validate">
+                <label for="group-des">简述</label>
+            </div>
+
+            <div class="input-field col s11">
+                <input id="ddl" type="text" class="datepicker">
+                <label for="ddl">截止日期</label>
+            </div>
+
+          </div>
+
+            <div class="input-field col s11">
+                <select id="group-tag">
+                  <option value="" disabled selected>选择你的标签</option>
+                  <option value="1">学习</option>
+                  <option value="2">健康</option>
+                  <option value="3">运动</option>
+                  <option value="4">其他</option>
+                </select>
+                <label>标签</label>
+            </div>
+
+        </form>
+
+        <div class="col s8">
+            <a id="addsubtask" class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+
+        <ul id="subRenderer" class="collapsible col s11">
+            
+        </ul>
+
+        <div class="col s11">
+            <button id="submmit" class="btn waves-effect waves-light" type="submit" name="action">确认
+                <i class="material-icons right">send</i>
+            </button>
+
+            <a id="leave" class="waves-effect waves-light btn">取消</a>
+        </div>
+
+      </div>
+
+      <script type="text/javascript" src="../../materialize/js/materialize.min.js"></script>
+      <script src="../../scripts/subWindowscript/addgroup.js"></script>
+    </body>
+</html>
