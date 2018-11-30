@@ -17,6 +17,8 @@ const group_Renderer = document.getElementById(RenderId_group);
 const current_task_Renderer = document.getElementById(RenderId_current_task);
 const current_group_Renderer = document.getElementById(RenderId_current_group);
 
+const point_stat=document.getElementById("point_stat");
+
 function MakeUpElement(_tag, _classname, _innerText) {
   var temp = document.createElement(_tag);
   temp.className = _classname;
@@ -47,7 +49,7 @@ function ClearAll(RenderId) {
 function AddItem(_title, _icon, _point, _description) {
   item_num++;
   var temp = MakeUpItem(_title, _icon, _point, _description);
-  temp.setAttribute("id",item_num.toString());
+  temp.setAttribute("id","i"+item_num);
   shop_Renderer.appendChild(temp);
 }
 
@@ -64,6 +66,27 @@ function MakeUpItem(_title, _icon, _point, _description) {
   buttom1.setAttribute("href", "#!");
   var btnicon1 = MakeUpElement("i", "material-icons", "check");
   buttom1.appendChild(btnicon1);
+  buttom1.addEventListener("click",function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = shop_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        console.log(parseInt(item_line[i].point));
+        
+        Minus_point(parseInt(item_line[i].point));
+        
+      }
+    }
+    
+  });
   var buttom2 = MakeUpElement("a", "waves-effect waves-red btn-flat", "");
   buttom2.setAttribute("href", "#!");
   var btnicon2 = MakeUpElement("i", "material-icons", "close");
@@ -201,7 +224,9 @@ function MakeUpTask(_title, _icon, _point, _description, _time) {
 */
 
 function AddCurrent(_name, _point, _tag) {
+  current_task_num++;
   var temp = MakeUpCurrent(_name, _point, _tag);
+  temp.setAttribute("id","c"+current_task_num);
   current_task_Renderer.appendChild(temp);
 }
 
@@ -212,6 +237,30 @@ function MakeUpCurrent(_name, _point, _tag) {
   var boxlabel = MakeUpElement("label", "", "");
   var ckb = MakeUpElement("input", "", "");
   ckb.setAttribute("type", "checkbox");
+  ckb.addEventListener("change",function(){
+    if(ckb.checked==true){
+    var _id = this.parentNode.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = current_task_Renderer.childNodes;
+
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        current_task_Renderer.removeChild(current_task_Renderer.children[i]);
+        Add_Point(parseInt(current_task_line[i].point))
+        console.log(current_task_line.splice(i, 1));
+      }
+    }
+
+  }
+});
   var slider = MakeUpElement("span", "", "");
   boxlabel.appendChild(ckb);
   boxlabel.appendChild(slider);
@@ -227,8 +276,25 @@ function MakeUpCurrent(_name, _point, _tag) {
   var btn = MakeUpElement("a", "waves-effect waves-red btn-small-flat", "");
   var icon = MakeUpElement("a", "material-icons", "close");
   btn.appendChild(icon);
+  btn.addEventListener("click",function(){
+    var _id = this.parentNode.parentNode.getAttribute("id");
+    console.log(_id);
+    var line = new Array();
+    var _line = current_task_Renderer.childNodes;
+    for (var i = 0; i < _line.length; i++) {
+      if (_line[i].nodeType === 1) {
+        line.push(_line[i]);
+      }
+    }
+    for (var i = 0; i < line.length; i++) {
+      console.log();
+      if (line[i].getAttribute("id") == _id) {
+        current_task_Renderer.removeChild(current_task_Renderer.children[i]);
+        console.log(current_task_line.splice(i, 1));
+      }
+    }
+  });
   delbtn.appendChild(btn);
-
   temp.appendChild(checkbox);
   temp.appendChild(name);
   temp.appendChild(point);
@@ -237,14 +303,7 @@ function MakeUpCurrent(_name, _point, _tag) {
   return temp;
 }
 
-function refreshCurrent(){
-  current_task_Renderer.innerHTML="";
-  if(current_task_line.length>0){
-    for(var i=0;i<current_task_Renderer.length;i++){
-      
-    }
-  }
-}
+
 
 /*
 <tr>
@@ -356,4 +415,18 @@ function MakeUpGroup(_title, _icon, _point, _description, _time, _tasks) {
 
 
   return temp;
+}
+
+
+/*========================================== */
+function refreshCurrent(){
+  current_task_Renderer.innerHTML="";
+  for(var i=0;i<current_task_line.length;i++){
+    var temp=current_task_line[i];
+    AddCurrent(temp.title,temp.point,temp.tag);
+  }
+}
+
+function refreshPoint(){
+  point_stat.innerText="total point :"+total_point;
 }

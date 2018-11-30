@@ -35,3 +35,13 @@ var item_num=0;
 
 var current_task_line=new Array();
 var current_task_num=0;
+
+var total_point=0;
+function Add_Point(num){
+    total_point+=num;
+    refreshPoint();
+}
+function Minus_point(num){
+    total_point-=num;
+    refreshPoint();
+}

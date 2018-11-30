@@ -8,7 +8,7 @@ function ForceQuit() {
 }
 
 const getcurrentbtn = document.getElementById("getcurrentbtn");
-getcurrentbtn.addEventListener("click", function () {
+getcurrentbtn.addEventListener("click",function() {
   console.log("gettask");
   if (task_line.length > 0) {
     localStorage.removeItem("current_task");
@@ -19,6 +19,8 @@ getcurrentbtn.addEventListener("click", function () {
   }
 
 });
+
+
 
 const shop_addBtn = document.getElementById("addshoplist");
 shop_addBtn.addEventListener("click", function () {
@@ -69,9 +71,13 @@ ipcRenderer.on("add_group", function () {
 })
 
 ipcRenderer.on("add_current",function(){
-  var temp_current=JSON.parse(localStorage.getItem("temp-current-task"));
-  for(var i=0;i<temp_current.length;i++){
+  if(localStorage.getItem("temp-current-task")!=""){
+    var temp_current=JSON.parse(localStorage.getItem("temp-current-task"));
+    console.log(temp_current)
+    for(var i=0;i<temp_current.length;i++){
     current_task_line.push(temp_current[i]);
+    }
+    console.log(current_task_line);
+    refreshCurrent();
   }
-  
 });

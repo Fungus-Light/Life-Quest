@@ -172,8 +172,6 @@ ipcMain.on("add_group",function(){
 });
 
 ipcMain.on("add_current",function(){
-    if(localStorage.getItem("temp-current-task")!=""){
-        mainWindow.webContents.send("add_current");
-    }
+    mainWindow.webContents.send("add_current");
     getTaskWin.close();
-})
+});
