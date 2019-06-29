@@ -1,4 +1,8 @@
-# Life-Quest
+# Life-Quest(old)
+
+
+please look at the new project
+
 An Electron-Based task-help application,using MDL.
 基于Electron,使用Material Design Lite作为UI框架。
 
