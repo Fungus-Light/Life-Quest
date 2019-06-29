@@ -1,7 +1,7 @@
 # Life-Quest(old)
 
 
-please look at the new project
+please look at the new project   https://github.com/Fungus-Light/Keine-List
 
 An Electron-Based task-help application,using MDL.
 基于Electron,使用Material Design Lite作为UI框架。
